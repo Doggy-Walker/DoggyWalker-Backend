@@ -15,11 +15,11 @@ public class User {
 		this.name = name;
 	}
 
-	public static User of(final String loginId, final String name) {
-		return User.of(null, loginId, name);
+	public static User createUser(final String loginId, final String name) {
+		return User.createUser(null, loginId, name);
 	}
 
-	public static User of(final Long id, final String loginId, final String name) {
+	public static User createUser(final Long id, final String loginId, final String name) {
 		return new User(id, loginId, name);
 	}
 }

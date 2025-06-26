@@ -3,6 +3,7 @@ package org.sopt.doggywalker.backendapi.domain.user.application.service;
 import org.sopt.doggywalker.backendapi.domain.user.application.dto.request.CreateUserServiceRequest;
 import org.sopt.doggywalker.backendapi.domain.user.domain.model.User;
 import org.sopt.doggywalker.backendapi.domain.user.domain.repository.UserRepository;
+import org.sopt.doggywalker.backendapi.domain.user.exception.UserBusinessException;
 import org.sopt.doggywalker.backendapi.domain.user.exception.UserErrorCode;
 import org.sopt.doggywalker.backendapi.global.exception.BusinessException;
 import org.springframework.stereotype.Service;
@@ -25,10 +26,10 @@ public class UserServiceImpl implements UserService {
 		final String name = request.name();
 
 		if (userRepository.existsByLoginId(loginId)) {
-			throw new BusinessException(UserErrorCode.USER_DUPLICATE_LOGIN_ID);
+			throw new UserBusinessException(UserErrorCode.USER_DUPLICATE_LOGIN_ID);
 		}
 
-		User user = User.of(loginId, name);
+		User user = User.createUser(loginId, name);
 
 		return userRepository.save(user);
 	}

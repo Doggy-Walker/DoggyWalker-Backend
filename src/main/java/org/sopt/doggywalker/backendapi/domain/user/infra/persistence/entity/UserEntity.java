@@ -36,6 +36,6 @@ public class UserEntity extends BaseEntity {
 	}
 
 	public User toDomain() {
-		return User.of(this.id, this.loginId, this.name);
+		return User.createUser(this.id, this.loginId, this.name);
 	}
 }
