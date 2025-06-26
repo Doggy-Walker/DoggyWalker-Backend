@@ -1,4 +1,4 @@
-package com.sopt.doggywalker.backendapi;
+package org.sopt.doggywalker.backendapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
