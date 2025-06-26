@@ -11,13 +11,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiResponse<T> {
-  /** 사용자 및 클라이언트가 참조할 코드 */
+
+  /**
+   * 사용자 및 클라이언트가 참조할 코드
+   */
   private String code;
 
-  /** 클라이언트에게 노출할 메시지 */
+  /**
+   * 클라이언트에게 노출할 메시지
+   */
   private String message;
 
-  /** 실제 응답 페이로드 */
+  /**
+   * 실제 응답 페이로드
+   */
   private T data;
 
   /**
@@ -52,10 +59,11 @@ public class ApiResponse<T> {
 
   /**
    * BusinessException -> ErrorCode -> ApiResponse 로 매핑될 때 사용
-   * @param code 커스텀 에러코드
+   *
+   * @param code    커스텀 에러코드
    * @param message 커스텀 메시지
+   * @param <T>     데이터 타입 (null)
    * @return ApiResponse
-   * @param <T> 데이터 타입 (null)
    */
   public static <T> ApiResponse<T> error(String code, String message) {
     return new ApiResponse<>(code, message, null);

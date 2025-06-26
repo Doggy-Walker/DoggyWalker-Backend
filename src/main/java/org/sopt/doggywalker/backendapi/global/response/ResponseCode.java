@@ -4,8 +4,7 @@ import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
 /**
- * 전역 응답 코드
- * HTTP·프레임워크 예외 대응
+ * 전역 응답 코드 HTTP·프레임워크 예외 대응
  */
 @Getter
 public enum ResponseCode {

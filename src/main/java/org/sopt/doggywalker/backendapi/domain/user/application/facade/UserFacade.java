@@ -1,10 +1,10 @@
 package org.sopt.doggywalker.backendapi.domain.user.application.facade;
 
 import lombok.RequiredArgsConstructor;
-import org.sopt.doggywalker.backendapi.domain.user.application.service.UserService;
-import org.sopt.doggywalker.backendapi.domain.user.domain.model.User;
 import org.sopt.doggywalker.backendapi.domain.user.application.dto.request.CreateUserServiceRequest;
 import org.sopt.doggywalker.backendapi.domain.user.application.dto.response.CreateUserServiceResponse;
+import org.sopt.doggywalker.backendapi.domain.user.application.service.UserService;
+import org.sopt.doggywalker.backendapi.domain.user.domain.model.User;
 import org.springframework.stereotype.Component;
 
 @Component
