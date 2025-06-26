@@ -1,6 +1,5 @@
 package org.sopt.doggywalker.backendapi.domain.user.infra.persistence;
 
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.sopt.doggywalker.backendapi.domain.user.domain.model.User;
 import org.sopt.doggywalker.backendapi.domain.user.domain.repository.UserRepository;

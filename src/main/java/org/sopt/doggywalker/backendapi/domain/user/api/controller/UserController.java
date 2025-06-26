@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.sopt.doggywalker.backendapi.domain.user.application.facade.UserFacade;
 import org.sopt.doggywalker.backendapi.domain.user.application.dto.request.CreateUserServiceRequest;
 import org.sopt.doggywalker.backendapi.domain.user.application.dto.response.CreateUserServiceResponse;
+import org.sopt.doggywalker.backendapi.global.response.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,9 +19,9 @@ public class UserController {
   private final UserFacade userFacade;
 
   @PostMapping
-  public ResponseEntity<CreateUserServiceResponse> create(
+  public ResponseEntity<ApiResponse<CreateUserServiceResponse>> create(
       @RequestBody CreateUserServiceRequest createUserRequest) {
 
-    return ResponseEntity.ok(userFacade.register(createUserRequest));
+    return ResponseEntity.ok(ApiResponse.success(userFacade.register(createUserRequest)));
   }
 }
