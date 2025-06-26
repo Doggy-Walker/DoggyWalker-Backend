@@ -1,13 +1,14 @@
-package org.sopt.doggywalker.backendapi.global.exception;
+package org.sopt.doggywalker.backendapi.domain.user.exception;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import org.sopt.doggywalker.backendapi.global.exception.ErrorCode;
 import org.springframework.http.HttpStatus;
 
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
-public enum GlobalErrorCode implements ErrorCode {
+public enum UserErrorCode implements ErrorCode {
 
-  INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "G50001", "서버 내부 오류가 발생했습니다");
+  USER_DUPLICATE_LOGIN_ID(HttpStatus.CONFLICT, "G40900", "중복된 로그인 아이디입니다.");
 
   private final HttpStatus status;
   private final String code;

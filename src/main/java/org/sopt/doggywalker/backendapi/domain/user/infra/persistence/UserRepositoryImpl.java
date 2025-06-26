@@ -14,9 +14,14 @@ public class UserRepositoryImpl implements UserRepository {
 
   @Override
   public User save(final User user) {
-    UserEntity entity = UserEntity.of(user.getName());
+    UserEntity entity = UserEntity.from(user);
     UserEntity saved = springDataUserRepository.save(entity);
 
     return saved.toDomain();
+  }
+
+  @Override
+  public boolean existsByLoginId(final String loginId) {
+    return springDataUserRepository.existsByLoginId(loginId);
   }
 }

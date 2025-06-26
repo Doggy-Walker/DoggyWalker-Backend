@@ -5,10 +5,10 @@ import org.sopt.doggywalker.backendapi.domain.user.application.dto.request.Creat
 
 public record CreateUserRequest(
     @NotNull(message = "이름은 필수값입니다.") String name,
-    @NotNull(message = "숫자는 필수값입니다.") String number
-    ) {
+    @NotNull(message = "로그인 아이디는 필수값입니다.") String loginId
+) {
 
   public CreateUserServiceRequest toServiceRequest() {
-    return CreateUserServiceRequest.of(name());
+    return CreateUserServiceRequest.of(loginId(), name());
   }
 }

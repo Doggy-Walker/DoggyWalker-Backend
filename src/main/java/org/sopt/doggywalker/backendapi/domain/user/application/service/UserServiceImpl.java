@@ -4,6 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.sopt.doggywalker.backendapi.domain.user.domain.model.User;
 import org.sopt.doggywalker.backendapi.domain.user.domain.repository.UserRepository;
 import org.sopt.doggywalker.backendapi.domain.user.application.dto.request.CreateUserServiceRequest;
+import org.sopt.doggywalker.backendapi.domain.user.exception.UserErrorCode;
+import org.sopt.doggywalker.backendapi.global.exception.BusinessException;
+import org.sopt.doggywalker.backendapi.global.exception.ErrorCode;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,7 +22,14 @@ public class UserServiceImpl implements UserService {
    */
   @Override
   public User createUser(final CreateUserServiceRequest request) {
-    User user = User.of(request.name());
+    final String loginId = request.loginId();
+    final String name = request.name();
+
+    if (userRepository.existsByLoginId(loginId)) {
+      throw new BusinessException(UserErrorCode.USER_DUPLICATE_LOGIN_ID);
+    }
+
+    User user = User.of(loginId, name);
 
     return userRepository.save(user);
   }

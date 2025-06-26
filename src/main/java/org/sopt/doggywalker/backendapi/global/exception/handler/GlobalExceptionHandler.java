@@ -77,7 +77,7 @@ public class GlobalExceptionHandler {
         .map(v -> v.getMessage())
         .collect(Collectors.joining("; "));
     log.warn("Constraint violation: {}", messages);
-    
+
     return ApiResponse.error(ResponseCode.BAD_REQUEST.getCode(), messages);
   }
 

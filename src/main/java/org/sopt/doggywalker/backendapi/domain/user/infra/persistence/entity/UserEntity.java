@@ -23,15 +23,18 @@ public class UserEntity extends BaseEntity {
 
   private String name;
 
-  public UserEntity(final String name) {
+  private String loginId;
+
+  protected UserEntity(final String name, final String loginId) {
     this.name = name;
+    this.loginId = loginId;
   }
 
-  public static UserEntity of(String name) {
-    return new UserEntity(name);
+  public static UserEntity from(User user) {
+    return new UserEntity(user.getName(), user.getLoginId());
   }
 
   public User toDomain() {
-    return User.of(this.id, this.name);
+    return User.of(this.id, this.loginId, this.name);
   }
 }

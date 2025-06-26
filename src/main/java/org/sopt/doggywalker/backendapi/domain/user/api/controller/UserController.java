@@ -24,6 +24,7 @@ public class UserController {
   @PostMapping
   public ResponseEntity<ApiResponse<CreateUserResponse>> create(
       @RequestBody @Valid CreateUserRequest createUserRequest) {
+
     final CreateUserResponse response = CreateUserResponse.from(
         userFacade.register(createUserRequest.toServiceRequest()));
 
