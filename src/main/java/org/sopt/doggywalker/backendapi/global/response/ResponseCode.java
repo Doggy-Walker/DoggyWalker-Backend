@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 
 /**
  * 전역 응답 코드
+ * HTTP·프레임워크 예외 대응
  */
 @Getter
 public enum ResponseCode {
@@ -17,6 +18,7 @@ public enum ResponseCode {
   NOT_FOUND(HttpStatus.NOT_FOUND, "E404", "리소스를 찾을 수 없음"),
   CONFLICT(HttpStatus.CONFLICT, "E409", "데이터 충돌"),
   INTERNAL_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "E500", "서버 내부 오류");
+
 
   private final HttpStatus status;
   private final String code;

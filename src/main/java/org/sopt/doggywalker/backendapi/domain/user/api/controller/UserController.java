@@ -1,6 +1,9 @@
 package org.sopt.doggywalker.backendapi.domain.user.api.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.sopt.doggywalker.backendapi.domain.user.api.dto.request.CreateUserRequest;
+import org.sopt.doggywalker.backendapi.domain.user.api.dto.response.CreateUserResponse;
 import org.sopt.doggywalker.backendapi.domain.user.application.facade.UserFacade;
 import org.sopt.doggywalker.backendapi.domain.user.application.dto.request.CreateUserServiceRequest;
 import org.sopt.doggywalker.backendapi.domain.user.application.dto.response.CreateUserServiceResponse;
@@ -19,9 +22,11 @@ public class UserController {
   private final UserFacade userFacade;
 
   @PostMapping
-  public ResponseEntity<ApiResponse<CreateUserServiceResponse>> create(
-      @RequestBody CreateUserServiceRequest createUserRequest) {
+  public ResponseEntity<ApiResponse<CreateUserResponse>> create(
+      @RequestBody @Valid CreateUserRequest createUserRequest) {
+    final CreateUserResponse response = CreateUserResponse.from(
+        userFacade.register(createUserRequest.toServiceRequest()));
 
-    return ResponseEntity.ok(ApiResponse.success(userFacade.register(createUserRequest)));
+    return ResponseEntity.ok(ApiResponse.success(response));
   }
 }
