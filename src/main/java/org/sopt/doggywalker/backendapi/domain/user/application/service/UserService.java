@@ -5,5 +5,5 @@ import org.sopt.doggywalker.backendapi.domain.user.domain.model.User;
 
 public interface UserService {
 
-  User createUser(final CreateUserServiceRequest request);
+	User createUser(final CreateUserServiceRequest request);
 }

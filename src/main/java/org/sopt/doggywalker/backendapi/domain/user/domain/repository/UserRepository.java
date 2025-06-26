@@ -4,7 +4,7 @@ import org.sopt.doggywalker.backendapi.domain.user.domain.model.User;
 
 public interface UserRepository {
 
-  User save(User user);
+	User save(User user);
 
-  public boolean existsByLoginId(String loginId);
+	public boolean existsByLoginId(String loginId);
 }
