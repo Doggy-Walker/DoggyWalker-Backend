@@ -9,7 +9,10 @@ public record CreateUserResponse(
 ) {
 
 	public static CreateUserResponse from(final CreateUserServiceResponse userResponse) {
-		return new CreateUserResponse(userResponse.id(), userResponse.userName(),
-			userResponse.loginId());
+		return new CreateUserResponse(
+			userResponse.id(),
+			userResponse.userName(),
+			userResponse.loginId()
+		);
 	}
 }

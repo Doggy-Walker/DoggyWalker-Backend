@@ -10,6 +10,6 @@ public record CreateUserRequest(
 ) {
 
 	public CreateUserServiceRequest toServiceRequest() {
-		return CreateUserServiceRequest.of(loginId(), name());
+		return CreateUserServiceRequest.of(name(), loginId());
 	}
 }
