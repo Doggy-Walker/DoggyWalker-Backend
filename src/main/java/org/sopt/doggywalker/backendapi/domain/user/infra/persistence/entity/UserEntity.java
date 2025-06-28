@@ -9,13 +9,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Entity
 @Table(name = "users")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder(access = AccessLevel.PROTECTED)
 public class UserEntity extends BaseEntity {
 
 	@Id
@@ -26,16 +31,10 @@ public class UserEntity extends BaseEntity {
 
 	private String loginId;
 
-	protected UserEntity(final String name, final String loginId) {
-		this.name = name;
-		this.loginId = loginId;
-	}
-
-	public static UserEntity from(User user) {
-		return new UserEntity(user.getName(), user.getLoginId());
-	}
-
-	public User toDomain() {
-		return User.createUser(this.id, this.loginId, this.name);
+	public static UserEntity createEntity(String name, String loginId) {
+		return UserEntity.builder()
+			.name(name)
+			.loginId(loginId)
+			.build();
 	}
 }
