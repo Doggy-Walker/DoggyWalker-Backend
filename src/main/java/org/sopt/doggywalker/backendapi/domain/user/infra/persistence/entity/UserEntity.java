@@ -1,6 +1,5 @@
 package org.sopt.doggywalker.backendapi.domain.user.infra.persistence.entity;
 
-import org.sopt.doggywalker.backendapi.domain.user.domain.model.User;
 import org.sopt.doggywalker.backendapi.global.infra.persistence.entity.BaseEntity;
 
 import jakarta.persistence.Entity;
@@ -13,7 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 @Entity
 @Table(name = "users")

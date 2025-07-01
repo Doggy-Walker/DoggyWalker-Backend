@@ -7,4 +7,6 @@ public interface UserRepository {
 	User save(User user);
 
 	public boolean existsByLoginId(String loginId);
+
+	void deleteAllInBatch();
 }

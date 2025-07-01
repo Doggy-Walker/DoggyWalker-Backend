@@ -27,4 +27,9 @@ public class UserRepositoryImpl implements UserRepository {
 	public boolean existsByLoginId(final String loginId) {
 		return springDataUserRepository.existsByLoginId(loginId);
 	}
+
+	@Override
+	public void deleteAllInBatch() {
+		springDataUserRepository.deleteAllInBatch();
+	}
 }

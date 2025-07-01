@@ -1,4 +1,4 @@
-package org.sopt.doggywalker.backendapi.domain.user.application.facade;
+package org.sopt.doggywalker.backendapi.domain.user.application.facade.command;
 
 import org.sopt.doggywalker.backendapi.domain.user.application.dto.request.CreateUserServiceRequest;
 import org.sopt.doggywalker.backendapi.domain.user.application.dto.response.CreateUserServiceResponse;
@@ -10,11 +10,11 @@ import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class UserFacade {
+public class UserRegisterFacade {
 
 	private final UserService userService;
 
-	public CreateUserServiceResponse register(CreateUserServiceRequest request) {
+	public CreateUserServiceResponse execute(CreateUserServiceRequest request) {
 		User user = userService.createUser(request);
 
 		return CreateUserServiceResponse.from(user);
