@@ -5,7 +5,6 @@ import org.sopt.doggywalker.backendapi.domain.user.domain.model.User;
 import org.sopt.doggywalker.backendapi.domain.user.domain.repository.UserRepository;
 import org.sopt.doggywalker.backendapi.domain.user.exception.UserBusinessException;
 import org.sopt.doggywalker.backendapi.domain.user.exception.UserErrorCode;
-import org.sopt.doggywalker.backendapi.global.exception.BusinessException;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;

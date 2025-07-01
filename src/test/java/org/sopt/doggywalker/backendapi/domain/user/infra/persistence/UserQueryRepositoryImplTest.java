@@ -51,7 +51,7 @@ class UserQueryRepositoryImplTest {
 		// then
 		assertThat(users).hasSize(20);
 		assertThat(users).extracting("loginId")
-			.containsExactlyInAnyOrderElementsOf(IntStream.rangeClosed(1, 20).mapToObj(i ->"loginId" + i).toList());
+			.containsExactlyInAnyOrderElementsOf(IntStream.rangeClosed(1, 20).mapToObj(i -> "loginId" + i).toList());
 	}
 
 	@Test
@@ -66,6 +66,6 @@ class UserQueryRepositoryImplTest {
 		// then
 		assertThat(users).hasSize(10);
 		assertThat(users).extracting("name")
-			.containsExactlyInAnyOrderElementsOf(IntStream.rangeClosed(11, 20).mapToObj(i ->"another" + i).toList());
+			.containsExactlyInAnyOrderElementsOf(IntStream.rangeClosed(11, 20).mapToObj(i -> "another" + i).toList());
 	}
 }
