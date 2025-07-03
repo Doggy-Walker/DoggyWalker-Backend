@@ -1,17 +1,18 @@
 spring:
   application:
-    name: doggywalker
+    name: pawkey-dev
+
   datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
-  h2:
-    console:
-      enabled: true
+    url: "jdbc:postgresql://pawkey-dev.cl0m2u2y2v1m.ap-northeast-2.rds.amazonaws.com:5432/pawkey-dev"
+    username: postgres
+    password: Pawkeydevtkfkdgo!
+
   jpa:
+    hibernate:
+      ddl-auto: update
     properties:
       hibernate:
         show_sql: true
         format_sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     open-in-view: false
