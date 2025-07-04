@@ -5,7 +5,7 @@ spring:
   datasource:
     url: "jdbc:postgresql://pawkey-dev.cl0m2u2y2v1m.ap-northeast-2.rds.amazonaws.com:5432/pawkey-dev"
     username: postgres
-    password: Pawkeydevtkfkdgo!
+    password: Pawkeymooserver36!
 
   jpa:
     hibernate:
