@@ -23,22 +23,52 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    queryDslVersion = "6.10.1"
+}
+
+
 dependencies {
+    // spring-boot
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // lombok
     implementation 'org.postgresql:postgresql:42.7.3'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
+    // test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
+    // dev
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-
     implementation 'com.h2database:h2'
 
+    // query-dsl
+    implementation "io.github.openfeign.querydsl:querydsl-core:${queryDslVersion}"
+    implementation "io.github.openfeign.querydsl:querydsl-jpa:${queryDslVersion}"
+    annotationProcessor "io.github.openfeign.querydsl:querydsl-apt:${queryDslVersion}:jpa"
+    annotationProcessor "jakarta.annotation:jakarta.annotation-api"
+    annotationProcessor "jakarta.persistence:jakarta.persistence-api"
+    implementation 'com.h2database:h2'
+
+    // swagger
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.9'
+}
+
+def querydslDir = layout.buildDirectory.dir("generated/querydsl").get().asFile;
+
+tasks.withType(JavaCompile) {
+    options.generatedSourceOutputDirectory = file(querydslDir)
+}
+
+tasks.named("clean") {
+    doLast {
+        delete file(querydslDir)
+    }
 }
 
 tasks.named('test') {

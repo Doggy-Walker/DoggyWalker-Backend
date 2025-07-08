@@ -1,12 +1,10 @@
 package org.sopt.doggywalker.backendapi.domain.user.api.controller;
 
-import org.sopt.doggywalker.backendapi.domain.user.api.dto.request.CreateUserRequest;
-import org.sopt.doggywalker.backendapi.domain.user.api.dto.response.CreateUserResponse;
-import org.sopt.doggywalker.backendapi.domain.user.application.facade.UserFacade;
-import org.sopt.doggywalker.backendapi.global.exception.ErrorCode;
+import org.sopt.doggywalker.backendapi.domain.user.api.dto.request.CreateUserRequestDto;
+import org.sopt.doggywalker.backendapi.domain.user.api.dto.response.CreateUserResponseDto;
+import org.sopt.doggywalker.backendapi.domain.user.application.facade.command.UserRegisterFacade;
 import org.sopt.doggywalker.backendapi.global.response.ApiResponse;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/v1/users")
 public class UserController {
 
-	private final UserFacade userFacade;
+	private final UserRegisterFacade userRegisterFacade;
 
 	@Operation(summary = "유저 생성", description = "회원가입 또는 유저 등록 API입니다.", tags = {"User"})
 	@ApiResponses({
@@ -32,11 +29,11 @@ public class UserController {
 		@io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "잘못된 요청", content = @Content(mediaType = "application/json")),
 		@io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "서버 내부 오류", content = @Content(mediaType = "application/json"))})
 	@PostMapping
-	public ResponseEntity<ApiResponse<CreateUserResponse>> create(
-		@RequestBody @Valid CreateUserRequest createUserRequest) {
+	public ResponseEntity<ApiResponse<CreateUserResponseDto>> create(
+		@RequestBody @Valid CreateUserRequestDto createUserRequestDto) {
 
-		final CreateUserResponse response = CreateUserResponse.from(
-			userFacade.register(createUserRequest.toServiceRequest()));
+		final CreateUserResponseDto response = CreateUserResponseDto.from(
+			userRegisterFacade.execute(createUserRequestDto.toCommand()));
 
 		return ResponseEntity.ok(ApiResponse.success(response));
 	}
