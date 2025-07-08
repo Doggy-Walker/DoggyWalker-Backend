@@ -17,6 +17,7 @@ import org.sopt.pawkey.backendapi.global.exception.S3BusinessException;
 import org.sopt.pawkey.backendapi.global.exception.S3ErrorCode;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.amazonaws.services.s3.AmazonS3;
@@ -31,7 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RequiredArgsConstructor
-@Component
+@Service
 public class S3ImageService {
 	private final AmazonS3 amazonS3;
 
