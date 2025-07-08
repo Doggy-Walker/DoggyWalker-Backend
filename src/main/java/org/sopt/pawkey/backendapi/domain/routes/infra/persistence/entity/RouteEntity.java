@@ -1,5 +1,8 @@
-package org.sopt.pawkey.backendapi.domain.region.infra.persistence.entity;
+package org.sopt.pawkey.backendapi.domain.routes.infra.persistence.entity;
 
+import java.time.LocalDateTime;
+
+import org.locationtech.jts.geom.LineString;
 import org.locationtech.jts.geom.Polygon;
 import org.sopt.pawkey.backendapi.domain.region.domain.model.RegionType;
 import org.sopt.pawkey.backendapi.global.infra.persistence.entity.BaseEntity;
@@ -19,29 +22,33 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "regions")
+@Table(name = "routes")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder(access = AccessLevel.PROTECTED)
-public class RegionEntity extends BaseEntity {
+public class RouteEntity extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "region_id")
-	private Long region_id;
+	@Column(name = "route_id")
+	private Long route_id;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "region_type", nullable = false)
-	private RegionType regionType;
+	@Column(name = "coordinates", columnDefinition = "geometry(LineString, 4326)", nullable = false)
+	private LineString coordinates;
 
-	@Column(name = "region_name", nullable = false)
-	private String regionName;
+	@Column(name = "distance", nullable = false)
+	private Double distance;
 
-	// @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "parent_id")
-	// private Region parent;
+	@Column(name = "duration", nullable = false)
+	private Integer duration;
 
-	@Column(name = "area_geometry", columnDefinition = "geometry(Polygon, 4326)")
-	private Polygon areaGeometry;
+	@Column(name = "started_at", nullable = false)
+	private LocalDateTime started_at;
+
+	@Column(name = "ended_at", nullable = false)
+	private LocalDateTime ended_at;
+
+	@Column(name = "step_count", nullable = false)
+	private Integer step_count;
 }
