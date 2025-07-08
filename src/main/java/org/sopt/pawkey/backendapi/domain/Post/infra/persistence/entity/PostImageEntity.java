@@ -1,8 +1,12 @@
-package org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity;
+package org.sopt.pawkey.backendapi.domain.Post.infra.persistence.entity;
 
+import org.sopt.pawkey.backendapi.domain.image.domain.model.ImageType;
 import org.sopt.pawkey.backendapi.global.infra.persistence.entity.BaseEntity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,35 +18,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "users")
+@Table(name = "post_image")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder(access = AccessLevel.PROTECTED)
-public class UserEntity extends BaseEntity {
+public class PostImageEntity extends BaseEntity { //Join 테이블
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long user_id;
-	private String name;
-	private String gender;
-	private int age;
+	@Column(name = "post_image_id")
+	private Long id;
+	//Image연관관계
+	//Post연관관계
 
-	//region 추가해야함
-
-
-
-
-	private String loginId;
-
-
-
-	public static UserEntity createEntity(String name, String loginId) {
-		return null;
-		// return UserEntity.builder()
-		// 	.name(name)
-		//
-		// 	.loginId(loginId)
-		// 	.build();
-	}
+	@Enumerated(EnumType.STRING)
+	@Column(name = "image_type", nullable = false, length = 20)
+	private ImageType imageType;
 }

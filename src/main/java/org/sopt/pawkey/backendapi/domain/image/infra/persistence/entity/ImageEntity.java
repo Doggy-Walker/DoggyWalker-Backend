@@ -1,7 +1,8 @@
-package org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity;
+package org.sopt.pawkey.backendapi.domain.image.infra.persistence.entity;
 
 import org.sopt.pawkey.backendapi.global.infra.persistence.entity.BaseEntity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,35 +15,27 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "users")
+@Table(name = "images")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder(access = AccessLevel.PROTECTED)
-public class UserEntity extends BaseEntity {
-
+public class ImageEntity extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long user_id;
-	private String name;
-	private String gender;
-	private int age;
+	@Column(name = "image_id")
+	private Long image_id;
 
-	//region 추가해야함
+	@Column(name = "image_url", nullable = false, length = 500)
+	private String image_url;
 
+	@Column(name = "extension", nullable = false, length = 10)
+	private String extension;
 
+	@Column(name = "width", nullable = false)
+	private int width;
 
+	@Column(name = "height", nullable = false)
+	private int height;
 
-	private String loginId;
-
-
-
-	public static UserEntity createEntity(String name, String loginId) {
-		return null;
-		// return UserEntity.builder()
-		// 	.name(name)
-		//
-		// 	.loginId(loginId)
-		// 	.build();
-	}
 }
