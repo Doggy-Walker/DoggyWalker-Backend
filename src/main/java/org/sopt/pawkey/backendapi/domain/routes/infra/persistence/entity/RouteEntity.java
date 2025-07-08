@@ -34,6 +34,9 @@ public class RouteEntity extends BaseEntity {
 	@Column(name = "route_id")
 	private Long route_id;
 
+	// post_id 는 안가지는게 맞는거 같은데 맞나
+	// region_id
+
 	@Column(name = "coordinates", columnDefinition = "geometry(LineString, 4326)", nullable = false)
 	private LineString coordinates;
 

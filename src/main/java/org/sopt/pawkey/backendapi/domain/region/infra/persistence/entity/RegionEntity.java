@@ -33,15 +33,15 @@ public class RegionEntity extends BaseEntity {
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "region_type", nullable = false)
-	private RegionType regionType;
+	private RegionType region_type;
 
 	@Column(name = "region_name", nullable = false)
-	private String regionName;
+	private String region_name;
 
 	// @ManyToOne(fetch = FetchType.LAZY)
 	// @JoinColumn(name = "parent_id")
 	// private Region parent;
 
 	@Column(name = "area_geometry", columnDefinition = "geometry(Polygon, 4326)")
-	private Polygon areaGeometry;
+	private Polygon area_geometry;
 }
