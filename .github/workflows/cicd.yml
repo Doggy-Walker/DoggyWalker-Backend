@@ -1,0 +1,75 @@
+name: CI/CD - Dev
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to deploy'
+        required: true
+        default: 'develop'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      - name: Setup Java 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./gradlew
+
+      - name: Generate application.yml
+        run: |
+          mkdir -p ./src/main/resources
+          echo "${{ secrets.CD_APPLICATION }}" > ./src/main/resources/application.yml
+
+      - name: Build Project (skip tests)
+        run: ./gradlew clean build -x test
+
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Build Docker Image
+        run: docker build -t "${{ secrets.DOCKER_USERNAME }}/pawkey-dev:latest" .
+
+      - name: Push Docker Image
+        run: docker push "${{ secrets.DOCKER_USERNAME }}/pawkey-dev:latest"
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install SSH Client
+        run: sudo apt-get update && sudo apt-get install -y openssh-client
+
+      - name: Create SSH Key File
+        run: |
+          echo "${{ secrets.DEV_EC2_SSH_KEY }}" > ssh_key.pem
+          chmod 600 ssh_key.pem
+
+      - name: Deploy to EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no -i ssh_key.pem ubuntu@${{ secrets.DEV_EC2_PUBLIC_IP }} << 'EOF'
+            echo "📦 Pull latest image"
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/pawkey-dev:latest
+
+            echo "🗑 Remove old container"
+            sudo docker rm -f pawkey-dev-container || true
+
+            echo "🚀 Run new container"
+            sudo docker run -d -p 8080:8080 --name pawkey-dev-container ${{ secrets.DOCKER_USERNAME }}/pawkey-dev:latest
+
+            echo "🔄 Reload nginx"
+            sudo nginx -t && sudo systemctl reload nginx
+
+            echo "✅ Deployment complete"
+          EOF
