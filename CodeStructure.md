@@ -1,4 +1,4 @@
-# 🏗️ DoggyWalker Backend API - 프로젝트 초기 설정
+# 🏗️ Pawkey Backend API - 프로젝트 초기 설정
 
 ## 목차
 - [🏛️ 전체 아키텍처 개요](#--------------)
@@ -48,7 +48,7 @@
 ## 📁 패키지 구조 설명
 
 ```
-org.sopt.doggywalker.backendapi
+org.sopt.pawkey.backendapi
 ├── domain                           # 📦 도메인별 모듈
 │   └── user                         # 👤 사용자 도메인
 │       ├── api                      # 🌐 프레젠테이션 계층
