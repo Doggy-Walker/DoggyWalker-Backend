@@ -1,6 +1,6 @@
 package org.sopt.doggywalker.backendapi.domain.user.application.service;
 
-import org.sopt.doggywalker.backendapi.domain.user.application.dto.request.CreateUserServiceRequest;
+import org.sopt.doggywalker.backendapi.domain.user.application.dto.request.CreateUserCommand;
 import org.sopt.doggywalker.backendapi.domain.user.domain.model.User;
 import org.sopt.doggywalker.backendapi.domain.user.domain.repository.UserRepository;
 import org.sopt.doggywalker.backendapi.domain.user.exception.UserBusinessException;
@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 	 * @return user 도메인 모델
 	 */
 	@Override
-	public User createUser(final CreateUserServiceRequest request) {
+	public User createUser(final CreateUserCommand request) {
 		final String loginId = request.loginId();
 		final String name = request.name();
 
