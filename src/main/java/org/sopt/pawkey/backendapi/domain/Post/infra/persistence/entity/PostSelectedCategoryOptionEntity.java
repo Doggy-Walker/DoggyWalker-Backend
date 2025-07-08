@@ -1,7 +1,8 @@
-package org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity;
+package org.sopt.pawkey.backendapi.domain.Post.infra.persistence.entity;
 
 import org.sopt.pawkey.backendapi.global.infra.persistence.entity.BaseEntity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,35 +15,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "users")
+@Table(name = "post_selected_category_option")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder(access = AccessLevel.PROTECTED)
-public class UserEntity extends BaseEntity {
+public class PostSelectedCategoryOptionEntity extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long user_id;
-	private String name;
-	private String gender;
-	private int age;
+	@Column(name = "post_selected_category_option_id")
+	private Long id;
+	//Post 연관관계
 
-	//region 추가해야함
+	//CategoryOption 연관관계
 
-
-
-
-	private String loginId;
-
-
-
-	public static UserEntity createEntity(String name, String loginId) {
-		return null;
-		// return UserEntity.builder()
-		// 	.name(name)
-		//
-		// 	.loginId(loginId)
-		// 	.build();
-	}
 }

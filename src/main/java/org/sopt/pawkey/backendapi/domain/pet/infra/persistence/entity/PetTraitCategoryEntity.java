@@ -1,7 +1,8 @@
-package org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity;
+package org.sopt.pawkey.backendapi.domain.pet.infra.persistence.entity;
 
 import org.sopt.pawkey.backendapi.global.infra.persistence.entity.BaseEntity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,35 +15,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "users")
+@Table(name = "pet_trait_category")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder(access = AccessLevel.PROTECTED)
-public class UserEntity extends BaseEntity {
-
+public class PetTraitCategoryEntity extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long user_id;
+	@Column(name = "pet_trait_category_id")
+	private Long id;
+
+	@Column(name = "name", nullable = false, length = 50)
 	private String name;
-	private String gender;
-	private int age;
-
-	//region 추가해야함
-
-
-
-
-	private String loginId;
-
-
-
-	public static UserEntity createEntity(String name, String loginId) {
-		return null;
-		// return UserEntity.builder()
-		// 	.name(name)
-		//
-		// 	.loginId(loginId)
-		// 	.build();
-	}
 }
