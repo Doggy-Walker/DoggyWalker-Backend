@@ -22,8 +22,8 @@ public class SwaggerConfig {
 	public OpenAPI customOpenAPI() { // OpenAPI 빈을 사용하여 API 문서의 정보(제목, 버전, 설명)를 커스터마이징
 		return new OpenAPI()
 			.info(new Info()
-				.title("doggy-walker API")
+				.title("paw-key API")
 				.version("v1")
-				.description("doggy-walker API 명세서"));
+				.description("paw-key API 명세서"));
 	}
 }
