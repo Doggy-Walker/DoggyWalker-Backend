@@ -1,7 +1,5 @@
 package org.sopt.pawkey.backendapi.domain.region.infra.mapper;
 
-import org.sopt.pawkey.backendapi.domain.region.infra.persistence.entity.RegionEntity;
-import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
 import org.springframework.stereotype.Component;
 
 @Component
