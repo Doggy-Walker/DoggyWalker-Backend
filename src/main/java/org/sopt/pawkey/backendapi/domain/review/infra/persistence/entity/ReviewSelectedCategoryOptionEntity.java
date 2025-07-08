@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 public class ReviewSelectedCategoryOptionEntity extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "review_selected_category_option_id")
 	private Long id;
 
 	// review_id, category_option_id

@@ -29,7 +29,7 @@ public class ReviewEntity extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "review_id")
-	private Long review_id;
+	private Long reviewId;
 
 	// @Column(name = "user_id", nullable = false)
 	// private Long user_id;

@@ -28,11 +28,11 @@ public class CategoryOptionEntity extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "category_option_id")
 	private Long id;
 
 	// category_id
 
 	@Column(name = "option_text", nullable = false)
-	private String option_text;
+	private String optionText;
 }

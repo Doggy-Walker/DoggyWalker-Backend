@@ -47,11 +47,11 @@ public class RouteEntity extends BaseEntity {
 	private Integer duration;
 
 	@Column(name = "started_at", nullable = false)
-	private LocalDateTime started_at;
+	private LocalDateTime startedAt;
 
 	@Column(name = "ended_at", nullable = false)
-	private LocalDateTime ended_at;
+	private LocalDateTime endedAt;
 
 	@Column(name = "step_count", nullable = false)
-	private Integer step_count;
+	private Integer stepCount;
 }

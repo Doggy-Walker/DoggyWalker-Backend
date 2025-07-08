@@ -29,19 +29,19 @@ public class RegionEntity extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "region_id")
-	private Long region_id;
+	private Long regionId;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "region_type", nullable = false)
-	private RegionType region_type;
+	private RegionType regionType;
 
 	@Column(name = "region_name", nullable = false)
-	private String region_name;
+	private String regionName;
 
 	// @ManyToOne(fetch = FetchType.LAZY)
 	// @JoinColumn(name = "parent_id")
 	// private Region parent;
 
 	@Column(name = "area_geometry", columnDefinition = "geometry(Polygon, 4326)")
-	private Polygon area_geometry;
+	private Polygon areaGeometry;
 }
