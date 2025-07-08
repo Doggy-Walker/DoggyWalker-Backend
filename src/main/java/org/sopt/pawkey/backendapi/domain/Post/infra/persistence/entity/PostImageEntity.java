@@ -1,4 +1,4 @@
-package org.sopt.pawkey.backendapi.domain.Post.infra.persistence.entity;
+package org.sopt.pawkey.backendapi.domain.post.infra.persistence.entity;
 
 import org.sopt.pawkey.backendapi.domain.image.domain.model.ImageType;
 import org.sopt.pawkey.backendapi.global.infra.persistence.entity.BaseEntity;
