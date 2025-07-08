@@ -15,3 +15,6 @@ spring:
         show_sql: true
         format_sql: true
     open-in-view: false
+springdoc:
+  default-produces-media-type: application/json
+  default-consumes-media-type: application/json
