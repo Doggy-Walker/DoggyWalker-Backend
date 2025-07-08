@@ -29,18 +29,18 @@ public class PostEntity extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long post_id;
+	private Long postId;
 
 	// @ManyToOne(fetch = FetchType.LAZY)
 	// @JoinColumn(name = "writer_id", nullable = false)
 	// private UserEntity writer;
 
-	private Long route_id;
+	private Long routeId;
 
 	private String title;
 
 	@Column(columnDefinition = "TEXT")
 	private String description;
 
-	private Boolean is_public;
+	private Boolean isPublic;
 }

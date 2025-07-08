@@ -26,7 +26,7 @@ public class PostLikeEntity extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long post_like_id;
+	private Long postLikeId;
 
 	// @ManyToOne(fetch = FetchType.LAZY)
 	// @JoinColumn(name = "post_id", nullable = false)
