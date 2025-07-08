@@ -43,10 +43,4 @@ public class PostEntity extends BaseEntity {
 	private String description;
 
 	private Boolean is_public;
-
-	@Column(name = "created_at", updatable = false)
-	private LocalDateTime created_at;
-
-	@Column(name = "updated_at")
-	private LocalDateTime updated_at;
 }
