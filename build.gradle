@@ -60,6 +60,15 @@ dependencies {
 
     // s3
     implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+
+    // Hibernate Spatial (PostGIS)
+    implementation 'org.hibernate.orm:hibernate-spatial:6.5.2.Final' // spring-boot 3.5.x에서 호환되는 최신 버전 사용
+    // QueryDSL Spatial (jakarta 패키지 사용)
+    implementation 'com.querydsl:querydsl-spatial:5.1.0'
+    annotationProcessor 'com.querydsl:querydsl-spatial:5.1.0'
+
+    // JTS Geometry
+    implementation 'org.locationtech.jts:jts-core:1.19.0'
 }
 
 def querydslDir = layout.buildDirectory.dir("generated/querydsl").get().asFile;
