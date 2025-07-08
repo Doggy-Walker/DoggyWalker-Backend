@@ -1,6 +1,6 @@
 package org.sopt.pawkey.backendapi.domain.user.api.controller;
 
-import org.sopt.pawkey.backendapi.global.infra.s3.S3ImageService;
+import org.sopt.pawkey.backendapi.domain.common.ImageStorage;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class S3Controller {
 
-	private final S3ImageService s3ImageService;
+	private final ImageStorage s3ImageService;
 
 	@PostMapping("/upload/profile")
 	public ResponseEntity<String> uploadProfileImage(@RequestParam("image") MultipartFile image){
