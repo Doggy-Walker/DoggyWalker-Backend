@@ -1,7 +1,5 @@
-package org.sopt.pawkey.backendapi.domain.user.infra.mapper;
+package org.sopt.pawkey.backendapi.domain.post.infra.mapper;
 
-import org.sopt.pawkey.backendapi.domain.user.domain.model.PostLike;
-import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.PostLikeEntity;
 import org.springframework.stereotype.Component;
 
 @Component

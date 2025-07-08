@@ -1,4 +1,4 @@
-package org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity;
+package org.sopt.pawkey.backendapi.domain.post.infra.persistence.entity;
 
 import java.time.LocalDateTime;
 

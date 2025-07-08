@@ -1,4 +1,6 @@
-package org.sopt.pawkey.backendapi.domain.user.domain.model;
+package org.sopt.pawkey.backendapi.domain.post.domain.model;
+
+import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
 
 import lombok.Getter;
 
