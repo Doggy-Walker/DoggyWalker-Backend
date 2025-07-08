@@ -13,10 +13,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
+import org.sopt.pawkey.backendapi.domain.common.ImageStorage;
 import org.sopt.pawkey.backendapi.global.exception.S3BusinessException;
 import org.sopt.pawkey.backendapi.global.exception.S3ErrorCode;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -33,7 +33,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class S3ImageService {
+public class S3ImageService implements ImageStorage {
 	private final AmazonS3 amazonS3;
 
 	@Value("${cloud.aws.s3.bucket}")
@@ -43,14 +43,17 @@ public class S3ImageService {
 	private static final String ROUTE_DIR = "route";
 	private static final String WALK_DIR = "walk";
 
+	@Override
 	public String uploadProfileImage(MultipartFile image) {
 		return uploadImageByFolder(image, PROFILE_DIR);
 	}
 
+	@Override
 	public String uploadRouteImage(MultipartFile image) {
 		return uploadImageByFolder(image, ROUTE_DIR);
 	}
 
+	@Override
 	public List<String> uploadWalkImages(List<MultipartFile> images) {
 		if (images.size() > 3) {
 			throw new S3BusinessException(S3ErrorCode.TOO_MANY_FILES);
