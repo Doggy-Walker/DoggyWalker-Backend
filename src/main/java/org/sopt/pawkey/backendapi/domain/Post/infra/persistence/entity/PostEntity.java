@@ -1,9 +1,13 @@
 package org.sopt.pawkey.backendapi.domain.post.infra.persistence.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.sopt.pawkey.backendapi.domain.routes.infra.persistence.entity.RouteEntity;
 import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.UserEntity;
 import org.sopt.pawkey.backendapi.global.infra.persistence.entity.BaseEntity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
@@ -46,4 +51,16 @@ public class PostEntity extends BaseEntity {
 	@OneToOne
 	@JoinColumn(name = "route_id", nullable = false)
 	private RouteEntity route;
+
+	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<PostLikeEntity> postLikeEntityList = new ArrayList<>();
+
+	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<PostSelectedCategoryOptionEntity> postSelectedCategoryOptionEntityList = new ArrayList<>();
+
+	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<PostImageEntity> postImageEntityList = new ArrayList<>();
+
+	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<PostCategoryOptionTop3Entity> postCategoryOptionTop3EntityList = new ArrayList<>();
 }

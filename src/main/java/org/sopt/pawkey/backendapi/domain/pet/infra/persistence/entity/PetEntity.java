@@ -1,9 +1,14 @@
 package org.sopt.pawkey.backendapi.domain.pet.infra.persistence.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.sopt.pawkey.backendapi.domain.image.infra.persistence.entity.ImageEntity;
+import org.sopt.pawkey.backendapi.domain.post.infra.persistence.entity.PostImageEntity;
 import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.UserEntity;
 import org.sopt.pawkey.backendapi.global.infra.persistence.entity.BaseEntity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -12,6 +17,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
@@ -58,5 +64,8 @@ public class PetEntity extends BaseEntity {
 
 	@Column(name = "breed", length = 50)
 	private String breed;
+
+	@OneToMany(mappedBy = "pet", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<PetTraitSelectedEntity> petTraitSelectedEntityList = new ArrayList<>();
 
 }

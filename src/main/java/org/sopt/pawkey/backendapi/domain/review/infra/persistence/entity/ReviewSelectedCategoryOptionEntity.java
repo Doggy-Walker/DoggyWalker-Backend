@@ -38,4 +38,6 @@ public class ReviewSelectedCategoryOptionEntity extends BaseEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "category_option_id", nullable = false)
 	private CategoryOptionEntity categoryOption;
+
+
 }
