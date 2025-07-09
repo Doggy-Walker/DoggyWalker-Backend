@@ -4,9 +4,12 @@ import org.sopt.pawkey.backendapi.global.infra.persistence.entity.BaseEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -28,7 +31,10 @@ public class PetTraitOptionEntity extends BaseEntity {
 	private Long id;
 
 	//PetTraitCategory 연관관계
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "pet_trait_category_id")
+	private PetTraitCategoryEntity category;
 
 	@Column(name = "option_text", nullable = false, length = 50)
-	private String option_text;
+	private String optionText;
 }

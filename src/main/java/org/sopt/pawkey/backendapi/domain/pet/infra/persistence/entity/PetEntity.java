@@ -1,12 +1,18 @@
 package org.sopt.pawkey.backendapi.domain.pet.infra.persistence.entity;
 
+import org.sopt.pawkey.backendapi.domain.image.infra.persistence.entity.ImageEntity;
+import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.UserEntity;
 import org.sopt.pawkey.backendapi.global.infra.persistence.entity.BaseEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -24,7 +30,7 @@ public class PetEntity extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "pet_id")
-	private Long pet_id;
+	private Long petId;
 
 	//User 연관관계 추가
 	@Column(name = "name", nullable = false, length = 50)
@@ -37,9 +43,16 @@ public class PetEntity extends BaseEntity {
 	private int age;
 
 	@Column(name = "is_age_known", nullable = false)
-	private boolean is_age_known;
+	private boolean isAgeKnown;
 
 	//Image 연관관계 추가
+	@OneToOne
+	@JoinColumn(name = "image_id")
+	private ImageEntity profileImage;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id")
+	private UserEntity user;
 
 	private boolean is_neutered;
 
