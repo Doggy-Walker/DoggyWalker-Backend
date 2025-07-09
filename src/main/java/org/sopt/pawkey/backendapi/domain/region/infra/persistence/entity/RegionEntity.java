@@ -1,9 +1,15 @@
 package org.sopt.pawkey.backendapi.domain.region.infra.persistence.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.locationtech.jts.geom.Polygon;
 import org.sopt.pawkey.backendapi.domain.region.domain.model.RegionType;
+import org.sopt.pawkey.backendapi.domain.routes.infra.persistence.entity.RouteEntity;
+import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.UserEntity;
 import org.sopt.pawkey.backendapi.global.infra.persistence.entity.BaseEntity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -14,6 +20,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -45,6 +52,17 @@ public class RegionEntity extends BaseEntity {
 	@JoinColumn(name = "parent_id")
 	private RegionEntity parent;
 
+	@OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<RegionEntity> childrenRegionList = new ArrayList<>();
+
+
 	@Column(name = "area_geometry", columnDefinition = "geometry(Polygon, 4326)")
 	private Polygon areaGeometry;
+
+	@OneToMany(mappedBy = "region", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	private List<UserEntity> userEntityList = new ArrayList<>();
+
+	@OneToMany(mappedBy = "region", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	private List<RouteEntity> routeEntityList = new ArrayList<>();
 }
+
