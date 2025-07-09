@@ -55,8 +55,7 @@ public class RegionEntity extends BaseEntity {
 	@OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<RegionEntity> childrenRegionList = new ArrayList<>();
 
-
-	@Column(name = "area_geometry", columnDefinition = "geometry(Polygon, 4326)")
+	@Column(name = "area_geometry", columnDefinition = "geometry(MultiPolygon, 4326)")
 	private Polygon areaGeometry;
 
 	@OneToMany(mappedBy = "region", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
