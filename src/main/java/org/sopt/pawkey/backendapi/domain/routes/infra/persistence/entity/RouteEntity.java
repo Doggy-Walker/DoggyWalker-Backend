@@ -4,16 +4,21 @@ import java.time.LocalDateTime;
 
 import org.locationtech.jts.geom.LineString;
 import org.locationtech.jts.geom.Polygon;
+import org.sopt.pawkey.backendapi.domain.category.infra.persistence.entity.CategoryEntity;
 import org.sopt.pawkey.backendapi.domain.region.domain.model.RegionType;
+import org.sopt.pawkey.backendapi.domain.region.infra.persistence.entity.RegionEntity;
 import org.sopt.pawkey.backendapi.global.infra.persistence.entity.BaseEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -32,10 +37,7 @@ public class RouteEntity extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "route_id")
-	private Long route_id;
-
-	// post_id 는 안가지는게 맞는거 같은데 맞나
-	// region_id
+	private Long routeId;
 
 	@Column(name = "coordinates", columnDefinition = "geometry(LineString, 4326)", nullable = false)
 	private LineString coordinates;
@@ -54,4 +56,8 @@ public class RouteEntity extends BaseEntity {
 
 	@Column(name = "step_count", nullable = false)
 	private Integer stepCount;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "region_id", nullable = false)
+	private RegionEntity region;
 }

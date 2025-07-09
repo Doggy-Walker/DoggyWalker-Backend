@@ -24,10 +24,10 @@ public class ImageEntity extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "image_id")
-	private Long image_id;
+	private Long imageId;
 
 	@Column(name = "image_url", nullable = false, length = 500)
-	private String image_url;
+	private String imageUrl;
 
 	@Column(name = "extension", nullable = false, length = 10)
 	private String extension;
