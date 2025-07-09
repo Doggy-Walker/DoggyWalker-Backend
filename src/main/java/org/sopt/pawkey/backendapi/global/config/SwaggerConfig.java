@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.servers.Server;
 
 @Configuration
 public class SwaggerConfig {
@@ -21,6 +22,7 @@ public class SwaggerConfig {
 	@Bean
 	public OpenAPI customOpenAPI() { // OpenAPI 빈을 사용하여 API 문서의 정보(제목, 버전, 설명)를 커스터마이징
 		return new OpenAPI()
+			.addServersItem(new Server().url("/"))
 			.info(new Info()
 				.title("paw-key API")
 				.version("v1")
