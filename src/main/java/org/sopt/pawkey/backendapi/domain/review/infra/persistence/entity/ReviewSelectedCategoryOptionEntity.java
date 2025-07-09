@@ -30,9 +30,9 @@ public class ReviewSelectedCategoryOptionEntity extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "review_selected_category_option_id")
 	private Long id;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "review", nullable = false)
+	@JoinColumn(name = "review_id", nullable = false)
 	private ReviewEntity review;
 
 	@ManyToOne(fetch = FetchType.LAZY)
