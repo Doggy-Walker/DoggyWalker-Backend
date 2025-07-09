@@ -26,7 +26,7 @@ public class UserQueryRepositoryImpl implements UserQueryRepository {
 
 		List<UserEntity> userEntities = jpaQueryFactory
 			.selectFrom(userEntity)
-			.orderBy(userEntity.user_id.desc())
+			.orderBy(userEntity.userId.desc())
 			.fetch();
 
 		return userEntities.stream()
@@ -41,7 +41,7 @@ public class UserQueryRepositoryImpl implements UserQueryRepository {
 		List<UserEntity> userEntities = jpaQueryFactory
 			.selectFrom(userEntity)
 			.where(userEntity.name.like("%" + name + "%"))
-			.orderBy(userEntity.user_id.desc())
+			.orderBy(userEntity.userId.desc())
 			.fetch();
 
 		return userEntities.stream()
