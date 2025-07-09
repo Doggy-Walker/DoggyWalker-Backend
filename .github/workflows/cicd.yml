@@ -30,7 +30,12 @@ jobs:
         run: |
           mkdir -p ./src/main/resources
           echo "${{ secrets.CD_APPLICATION }}" > ./src/main/resources/application.yml
-
+      
+      - name: Generate application-aws.yml
+        run: |
+          mkdir -p ./src/main/resources
+          echo "${{ secrets.CD_APPLICATION_AWS }}" > ./src/main/resources/application-aws.yml
+          
       - name: Build Project (skip tests)
         run: ./gradlew clean build -x test
 
