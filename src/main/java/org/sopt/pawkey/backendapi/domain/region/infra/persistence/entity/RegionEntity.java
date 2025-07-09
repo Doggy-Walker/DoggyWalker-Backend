@@ -59,9 +59,10 @@ public class RegionEntity extends BaseEntity {
 	@Column(name = "area_geometry", columnDefinition = "geometry(Polygon, 4326)")
 	private Polygon areaGeometry;
 
-	@OneToMany(mappedBy = "region", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "region", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<UserEntity> userEntityList = new ArrayList<>();
 
-	@OneToMany(mappedBy = "region", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "region", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<RouteEntity> routeEntityList = new ArrayList<>();
 }
+

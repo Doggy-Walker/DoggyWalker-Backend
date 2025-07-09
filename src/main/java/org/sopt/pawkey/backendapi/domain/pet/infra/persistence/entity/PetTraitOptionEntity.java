@@ -38,11 +38,11 @@ public class PetTraitOptionEntity extends BaseEntity {
 	//PetTraitCategory 연관관계
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "pet_trait_category_id")
-	private PetTraitCategoryEntity category;
+	private PetTraitCategoryEntity petTraitCategory;
 
 	@Column(name = "option_text", nullable = false, length = 50)
 	private String optionText;
 
-	@OneToMany(mappedBy = "pet", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "petTraitOption", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PetTraitSelectedEntity> petTraitSelectedEntityList = new ArrayList<>();
 }
