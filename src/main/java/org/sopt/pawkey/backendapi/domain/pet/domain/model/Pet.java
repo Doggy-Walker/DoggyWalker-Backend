@@ -4,6 +4,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.sopt.pawkey.backendapi.domain.image.domain.model.Image;
 import org.sopt.pawkey.backendapi.domain.image.infra.persistence.entity.ImageEntity;
 import org.sopt.pawkey.backendapi.domain.pet.infra.persistence.entity.PetTraitSelectedEntity;
 import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
@@ -26,15 +27,15 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class Pet {
-
-	private final Long petId;
-	private final String name;
-	private final String gender;
+	private Long petId;
+	private String name;
+	private String gender;
 	private int age;
 	private boolean isAgeKnown;
 	private boolean isNeutered;
 	private String breed;
 
-	private Image profileImage; //도메인 Image로 수정하기
+	private Image profileImage; // ← 여기가 중요!
 	private User user;
+	private List<PetTraitSelected> petTraits;
 }

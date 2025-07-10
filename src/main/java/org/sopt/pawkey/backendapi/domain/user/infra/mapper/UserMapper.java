@@ -6,23 +6,30 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserMapper {
-	/**
-	 * 데이터베이스 인프라와 통신하기 위한 객체로 변경
-	 * @param domain 유저 도메인 모델
-	 * @return 유저 엔티티
-	 */
-	public UserEntity toEntity(User domain) {
 
-		return UserEntity.createEntity(domain.getName(), domain.getLoginId());
+	public static User toDomain(UserEntity entity) {
+		if (entity == null) return null;
+
+		return new User(
+			entity.getUserId(),
+			entity.getName(),
+			entity.getGender(),
+			entity.getAge(),
+			RegionMapper.toDomain(entity.getRegion()),  // 연관 객체도 Mapper로
+			entity.getLoginId()
+		);
 	}
 
-	/**
-	 * 데이터베이스 엔티티를 도메인 로직에서 사용하기 위한 도메인 모델로 변경
-	 * @param entity 유저 엔티티
-	 * @return 유저 도메인 모델
-	 */
-	public User toDomain(UserEntity entity) {
+	public static UserEntity toEntity(User user) {
+		if (user == null) return null;
 
-		return User.createUser(entity.getUserId(), entity.getLoginId(), entity.getName());
+		return UserEntity.builder()
+			.userId(user.getUserId())                     // ← 수정
+			.name(user.getName())
+			.gender(user.getGender())                     // ← 수정
+			.age(user.getAge())
+			.region(RegionMapper.toEntity(user.getRegion()))
+			.loginId(user.getLoginId())
+			.build();
 	}
 }

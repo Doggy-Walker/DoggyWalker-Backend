@@ -30,7 +30,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "pets")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class PetEntity extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,7 +58,7 @@ public class PetEntity extends BaseEntity {
 	@JoinColumn(name = "user_id")
 	private UserEntity user;
 
-	private boolean is_neutered;
+	private boolean isNeutered;
 
 	@Column(name = "breed", length = 50)
 	private String breed;
@@ -67,4 +66,26 @@ public class PetEntity extends BaseEntity {
 	@OneToMany(mappedBy = "pet", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PetTraitSelectedEntity> petTraitSelectedEntityList = new ArrayList<>();
 
+	@Builder
+	public PetEntity(Long petId,
+		String name,
+		String gender,
+		int age,
+		boolean isAgeKnown,
+		ImageEntity profileImage,
+		UserEntity user,
+		boolean isNeutered,
+		String breed,
+		List<PetTraitSelectedEntity> petTraitSelectedEntityList) {
+		this.petId = petId;
+		this.name = name;
+		this.gender = gender;
+		this.age = age;
+		this.isAgeKnown = isAgeKnown;
+		this.profileImage = profileImage;
+		this.user = user;
+		this.isNeutered = isNeutered;
+		this.breed = breed;
+		this.petTraitSelectedEntityList = petTraitSelectedEntityList != null ? petTraitSelectedEntityList : new ArrayList<>();
+	}
 }

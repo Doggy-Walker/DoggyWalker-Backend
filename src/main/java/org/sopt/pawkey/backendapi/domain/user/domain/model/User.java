@@ -3,7 +3,7 @@ package org.sopt.pawkey.backendapi.domain.user.domain.model;
 import lombok.Getter;
 
 @Getter
-public class User {
+public class  User {
 
 	private final Long id;
 	private final String loginId;

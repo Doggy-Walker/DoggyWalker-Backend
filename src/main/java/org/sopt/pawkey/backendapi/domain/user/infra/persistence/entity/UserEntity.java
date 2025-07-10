@@ -60,8 +60,19 @@ public class UserEntity extends BaseEntity {
 	private List<PostLikeEntity> postLikeEntityList = new ArrayList<>();
 
 
-	public static UserEntity createEntity(String name, String loginId) {
-		return null;
-
+	@Builder
+	public UserEntity(Long userId,
+		String name,
+		String gender,
+		int age,
+		RegionEntity region,
+		String loginId) {
+		this.userId = userId;
+		this.name = name;
+		this.gender = gender;
+		this.age = age;
+		this.region = region;
+		this.loginId = loginId;
 	}
+
 }

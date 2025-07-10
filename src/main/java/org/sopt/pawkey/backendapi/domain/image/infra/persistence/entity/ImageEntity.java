@@ -25,7 +25,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "images")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class ImageEntity extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,5 +45,20 @@ public class ImageEntity extends BaseEntity {
 
 	@OneToMany(mappedBy = "image", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PostImageEntity> postImageEntityList = new ArrayList<>();
+
+	@Builder
+	public ImageEntity(Long imageId,
+		String imageUrl,
+		String extension,
+		int width,
+		int height,
+		List<PostImageEntity> postImageEntityList) {
+		this.imageId = imageId;
+		this.imageUrl = imageUrl;
+		this.extension = extension;
+		this.width = width;
+		this.height = height;
+		this.postImageEntityList = postImageEntityList != null ? postImageEntityList : new ArrayList<>();
+	}
 
 }
