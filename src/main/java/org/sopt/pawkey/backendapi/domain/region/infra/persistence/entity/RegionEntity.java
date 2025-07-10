@@ -3,7 +3,7 @@ package org.sopt.pawkey.backendapi.domain.region.infra.persistence.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.locationtech.jts.geom.Polygon;
+import org.locationtech.jts.geom.MultiPolygon;
 import org.sopt.pawkey.backendapi.domain.region.domain.model.RegionType;
 import org.sopt.pawkey.backendapi.domain.routes.infra.persistence.entity.RouteEntity;
 import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.UserEntity;
@@ -33,7 +33,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-@Builder(access = AccessLevel.PROTECTED)
+@Builder(access = AccessLevel.PUBLIC)
 public class RegionEntity extends BaseEntity {
 
 	@Id
@@ -56,7 +56,7 @@ public class RegionEntity extends BaseEntity {
 	private List<RegionEntity> childrenRegionList = new ArrayList<>();
 
 	@Column(name = "area_geometry", columnDefinition = "geometry(MultiPolygon, 4326)")
-	private Polygon areaGeometry;
+	private MultiPolygon areaGeometry;
 
 	@OneToMany(mappedBy = "region", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<UserEntity> userEntityList = new ArrayList<>();

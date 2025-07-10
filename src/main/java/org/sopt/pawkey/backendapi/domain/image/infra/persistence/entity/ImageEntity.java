@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.sopt.pawkey.backendapi.domain.post.infra.persistence.entity.PostImageEntity;
-import org.sopt.pawkey.backendapi.domain.post.infra.persistence.entity.PostLikeEntity;
 import org.sopt.pawkey.backendapi.global.infra.persistence.entity.BaseEntity;
 
 import jakarta.persistence.CascadeType;

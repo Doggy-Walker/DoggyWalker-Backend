@@ -3,20 +3,14 @@ package org.sopt.pawkey.backendapi.domain.category.infra.persistence.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.locationtech.jts.geom.Polygon;
 import org.sopt.pawkey.backendapi.domain.post.infra.persistence.entity.PostCategoryOptionTop3Entity;
-import org.sopt.pawkey.backendapi.domain.post.infra.persistence.entity.PostLikeEntity;
 import org.sopt.pawkey.backendapi.domain.post.infra.persistence.entity.PostSelectedCategoryOptionEntity;
-import org.sopt.pawkey.backendapi.domain.region.domain.model.RegionType;
-import org.sopt.pawkey.backendapi.domain.review.infra.persistence.entity.ReviewEntity;
 import org.sopt.pawkey.backendapi.domain.review.infra.persistence.entity.ReviewSelectedCategoryOptionEntity;
 import org.sopt.pawkey.backendapi.global.infra.persistence.entity.BaseEntity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

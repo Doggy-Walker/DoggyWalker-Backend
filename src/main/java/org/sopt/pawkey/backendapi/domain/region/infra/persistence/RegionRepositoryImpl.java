@@ -1,0 +1,27 @@
+package org.sopt.pawkey.backendapi.domain.region.infra.persistence;
+
+import org.sopt.pawkey.backendapi.domain.region.domain.RegionRepository;
+import org.sopt.pawkey.backendapi.domain.region.domain.model.Region;
+import org.sopt.pawkey.backendapi.domain.region.exception.RegionBusinessException;
+import org.sopt.pawkey.backendapi.domain.region.exception.RegionErrorCode;
+import org.sopt.pawkey.backendapi.domain.region.infra.mapper.RegionMapper;
+import org.sopt.pawkey.backendapi.domain.region.infra.persistence.entity.RegionEntity;
+import org.springframework.stereotype.Repository;
+
+import lombok.RequiredArgsConstructor;
+
+@Repository
+@RequiredArgsConstructor
+public class RegionRepositoryImpl implements RegionRepository {
+
+	private final SpringDataRegionRepository springDataRegionRepository;
+	private final RegionMapper regionMapper;
+
+	@Override
+	public Region getFirstById(Long regionId) {
+		RegionEntity regionEntity = springDataRegionRepository.getByRegionId(regionId)
+			.orElseThrow(() -> new RegionBusinessException(RegionErrorCode.REGION_NOT_FOUND));
+
+		return regionMapper.toDomain(regionEntity);
+	}
+}
