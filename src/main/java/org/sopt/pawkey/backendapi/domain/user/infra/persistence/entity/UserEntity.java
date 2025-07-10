@@ -45,8 +45,6 @@ public class UserEntity extends BaseEntity {
 	@JoinColumn(name = "region_id")
 	private RegionEntity region;
 
-	private String loginId;
-
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PetEntity> petEntityList = new ArrayList<>();
 
@@ -65,3 +63,4 @@ public class UserEntity extends BaseEntity {
 
 	}
 }
+

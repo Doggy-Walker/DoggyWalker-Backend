@@ -13,7 +13,7 @@ public class UserMapper {
 	 */
 	public UserEntity toEntity(User domain) {
 
-		return UserEntity.createEntity(domain.getName(), domain.getLoginId());
+		return UserEntity.createEntity(domain.getName(), domain.getUserId());
 	}
 
 	/**
@@ -23,6 +23,11 @@ public class UserMapper {
 	 */
 	public User toDomain(UserEntity entity) {
 
-		return User.createUser(entity.getUserId(), entity.getLoginId(), entity.getName());
+		return User.createUser(
+			entity.getUserId(),
+			entity.getName(),
+			entity.getGender(),
+			entity.getAge()
+		);
 	}
 }

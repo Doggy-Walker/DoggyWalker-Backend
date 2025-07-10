@@ -31,6 +31,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder
 public class RouteEntity extends BaseEntity {
 
 	@Id
@@ -46,12 +47,6 @@ public class RouteEntity extends BaseEntity {
 
 	@Column(name = "duration", nullable = false)
 	private Integer duration;
-
-	@Column(name = "started_at", nullable = false)
-	private LocalDateTime startedAt;
-
-	@Column(name = "ended_at", nullable = false)
-	private LocalDateTime endedAt;
 
 	@Column(name = "step_count", nullable = false)
 	private Integer stepCount;

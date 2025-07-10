@@ -28,8 +28,8 @@ public class UserServiceImpl implements UserService {
 			throw new UserBusinessException(UserErrorCode.USER_DUPLICATE_LOGIN_ID);
 		}
 
-		User user = User.createUser(loginId, name);
+		//User user = User.createUser(loginId, name);
 
-		return userRepository.save(user);
+		return null;
 	}
 }

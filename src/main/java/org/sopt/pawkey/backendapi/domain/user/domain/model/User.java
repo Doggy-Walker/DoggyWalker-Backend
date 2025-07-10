@@ -5,21 +5,20 @@ import lombok.Getter;
 @Getter
 public class User {
 
-	private final Long id;
-	private final String loginId;
+	private final Long userId;
 	private final String name;
+	private final String gender;
+	private final Integer age;
 
-	protected User(final Long id, final String loginId, final String name) {
-		this.id = id;
-		this.loginId = loginId;
+	protected User(final Long userId, final String name, final String gender, final Integer age) {
+		this.userId = userId;
 		this.name = name;
+		this.gender = gender;
+		this.age = age;
 	}
 
-	public static User createUser(final String loginId, final String name) {
-		return User.createUser(null, loginId, name);
-	}
-
-	public static User createUser(final Long id, final String loginId, final String name) {
-		return new User(id, loginId, name);
+	public static User createUser(final Long id, final String name, final String gender,
+		final Integer age) {
+		return new User(id, name, gender, age);
 	}
 }
