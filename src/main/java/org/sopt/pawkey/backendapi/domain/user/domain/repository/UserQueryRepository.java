@@ -1,6 +1,7 @@
 package org.sopt.pawkey.backendapi.domain.user.domain.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
 
@@ -10,5 +11,5 @@ public interface UserQueryRepository {
 
 	List<User> getUsersByNameLike(String name);
 
-	User getUserByUserId(Long userId);
+	Optional<User> getUserByUserId(Long userId);
 }

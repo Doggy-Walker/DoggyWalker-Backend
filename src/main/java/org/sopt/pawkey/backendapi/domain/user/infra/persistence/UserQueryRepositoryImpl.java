@@ -53,13 +53,15 @@ public class UserQueryRepositoryImpl implements UserQueryRepository {
 	}
 
 	@Override
-	public User getUserByUserId(Long userId) {
+	public Optional<User> getUserByUserId(Long userId) {
 		QUserEntity userEntity = QUserEntity.userEntity;
 
-		return userMapper.toDomain(Optional.ofNullable(jpaQueryFactory
-				.selectFrom(userEntity)
-				.where(userEntity.userId.eq(userId))
-				.fetchOne())
-			.orElseThrow(() -> new UserBusinessException(UserErrorCode.USER_NOT_FOUND)));
+		UserEntity found = jpaQueryFactory
+			.selectFrom(userEntity)
+			.where(userEntity.userId.eq(userId))
+			.fetchOne();
+
+		return Optional.ofNullable(found)
+			.map(userMapper::toDomain);
 	}
 }

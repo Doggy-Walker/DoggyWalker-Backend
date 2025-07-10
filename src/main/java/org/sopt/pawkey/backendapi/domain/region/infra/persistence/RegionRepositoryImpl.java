@@ -1,5 +1,7 @@
 package org.sopt.pawkey.backendapi.domain.region.infra.persistence;
 
+import java.util.Optional;
+
 import org.sopt.pawkey.backendapi.domain.region.domain.RegionRepository;
 import org.sopt.pawkey.backendapi.domain.region.domain.model.Region;
 import org.sopt.pawkey.backendapi.domain.region.exception.RegionBusinessException;
@@ -18,10 +20,8 @@ public class RegionRepositoryImpl implements RegionRepository {
 	private final RegionMapper regionMapper;
 
 	@Override
-	public Region getFirstById(Long regionId) {
-		RegionEntity regionEntity = springDataRegionRepository.getByRegionId(regionId)
-			.orElseThrow(() -> new RegionBusinessException(RegionErrorCode.REGION_NOT_FOUND));
-
-		return regionMapper.toDomain(regionEntity);
+	public Optional<Region> getFirstById(Long regionId) {
+		return springDataRegionRepository.getByRegionId(regionId)
+			.map(regionMapper::toDomain);
 	}
 }

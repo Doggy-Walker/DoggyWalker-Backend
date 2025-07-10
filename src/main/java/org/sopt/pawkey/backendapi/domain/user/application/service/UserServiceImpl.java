@@ -40,6 +40,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getByUserId(Long userId) {
-		return userQueryRepository.getUserByUserId(userId);
+		return userQueryRepository.getUserByUserId(userId)
+			.orElseThrow(() -> new UserBusinessException(UserErrorCode.USER_NOT_FOUND));
 	}
 }
