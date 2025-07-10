@@ -23,6 +23,8 @@ public class UserMapper {
 	 */
 	public User toDomain(UserEntity entity) {
 
-		return User.createUser(entity.getUserId(), entity.getLoginId(), entity.getName());
+		return User.builder()
+			.name(entity.getName())
+			.build();
 	}
 }

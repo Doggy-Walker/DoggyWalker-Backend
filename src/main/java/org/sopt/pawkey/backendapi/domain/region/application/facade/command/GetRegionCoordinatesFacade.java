@@ -4,6 +4,8 @@ import org.sopt.pawkey.backendapi.domain.region.application.dto.command.GetRegio
 import org.sopt.pawkey.backendapi.domain.region.application.dto.result.GetRegionCoordinatesResult;
 import org.sopt.pawkey.backendapi.domain.region.application.service.RegionService;
 import org.sopt.pawkey.backendapi.domain.region.domain.model.Region;
+import org.sopt.pawkey.backendapi.domain.user.application.service.UserService;
+import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -15,12 +17,13 @@ import lombok.RequiredArgsConstructor;
 public class GetRegionCoordinatesFacade {
 
 	private final RegionService regionService;
+	private final UserService userService;
 
 	public GetRegionCoordinatesResult execute(Long userId,
 		GetRegionCoordinatesCommand getRegionCoordinatesCommand) {
 
 		// TODO: user 가져오기
-
+		User user = userService.getByUserId(userId);
 		Region region = regionService.getRegionById(getRegionCoordinatesCommand.regionId());
 
 		return GetRegionCoordinatesResult.from(region);

@@ -9,4 +9,6 @@ public interface UserQueryRepository {
 	List<User> getUsers();
 
 	List<User> getUsersByNameLike(String name);
+
+	User getUserByUserId(Long userId);
 }

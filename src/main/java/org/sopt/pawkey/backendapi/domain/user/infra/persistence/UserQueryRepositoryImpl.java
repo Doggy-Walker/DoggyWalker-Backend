@@ -1,9 +1,12 @@
 package org.sopt.pawkey.backendapi.domain.user.infra.persistence;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
 import org.sopt.pawkey.backendapi.domain.user.domain.repository.UserQueryRepository;
+import org.sopt.pawkey.backendapi.domain.user.exception.UserBusinessException;
+import org.sopt.pawkey.backendapi.domain.user.exception.UserErrorCode;
 import org.sopt.pawkey.backendapi.domain.user.infra.mapper.UserMapper;
 import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.QUserEntity;
 import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.UserEntity;
@@ -47,5 +50,16 @@ public class UserQueryRepositoryImpl implements UserQueryRepository {
 		return userEntities.stream()
 			.map(userMapper::toDomain)
 			.toList();
+	}
+
+	@Override
+	public User getUserByUserId(Long userId) {
+		QUserEntity userEntity = QUserEntity.userEntity;
+
+		return userMapper.toDomain(Optional.ofNullable(jpaQueryFactory
+				.selectFrom(userEntity)
+				.where(userEntity.userId.eq(userId))
+				.fetchOne())
+			.orElseThrow(() -> new UserBusinessException(UserErrorCode.USER_NOT_FOUND)));
 	}
 }
