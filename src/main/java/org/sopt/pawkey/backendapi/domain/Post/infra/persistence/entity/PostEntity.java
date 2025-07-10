@@ -27,8 +27,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "posts")
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
+@AllArgsConstructor
 public class PostEntity extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,4 +62,10 @@ public class PostEntity extends BaseEntity {
 
 	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PostCategoryOptionTop3Entity> postCategoryOptionTop3EntityList = new ArrayList<>();
+
+	// public static PostEntity create(Long postId, String description, boolean isPublic,
+	// 	UserEntity user, RouteEntity route) {
+	// 	return new PostEntity(postId, description, isPublic, user, route,
+	// 		new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+	// }
 }
