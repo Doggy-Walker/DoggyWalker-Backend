@@ -1,6 +1,7 @@
 package org.sopt.pawkey.backendapi.domain.region.application.dto.result;
 
 import java.util.Map;
+import java.util.Optional;
 
 import org.sopt.pawkey.backendapi.domain.region.domain.model.Region;
 import org.sopt.pawkey.backendapi.domain.common.util.GeoJsonUtil;
@@ -16,8 +17,10 @@ public record GetRegionCoordinatesResult(
 		// MultiPolygon 객체를 GeoJSON 문자열로 변환
 		Map<String, Object> geoJson = GeoJsonUtil.toGeoJson(region.getAreaGeometry());
 
+		String parentText = region.getParent() == null ? "" : region.getParent().getRegionName() + " ";
+
 		return GetRegionCoordinatesResult.builder()
-			.regionName(region.getRegionName())
+			.regionName(parentText + region.getRegionName())
 			.geometryDto(geoJson)
 			.build();
 	}

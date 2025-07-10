@@ -26,11 +26,15 @@ public class RegionMapper {
 	 * @return Region 도메인 모델
 	 */
 	public Region toDomain(RegionEntity entity) {
+		if (entity == null) {
+			return null;
+		}
 
 		return Region.builder()
 			.regionType(entity.getRegionType())
 			.regionName(entity.getRegionName())
 			.areaGeometry(entity.getAreaGeometry())
+			.parent(toDomain(entity.getParent()))
 			.build();
 	}
 }

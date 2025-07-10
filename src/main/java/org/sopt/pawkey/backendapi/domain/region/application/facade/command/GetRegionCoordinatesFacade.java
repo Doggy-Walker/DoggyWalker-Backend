@@ -7,6 +7,7 @@ import org.sopt.pawkey.backendapi.domain.region.domain.model.Region;
 import org.sopt.pawkey.backendapi.domain.user.application.service.UserService;
 import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -14,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class GetRegionCoordinatesFacade {
 
 	private final RegionService regionService;
