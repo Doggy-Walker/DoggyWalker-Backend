@@ -24,7 +24,6 @@ public class GetRegionCoordinatesFacade {
 	public GetRegionCoordinatesResult execute(Long userId,
 		GetRegionCoordinatesCommand getRegionCoordinatesCommand) {
 
-		// TODO: user 가져오기
 		User user = userService.getByUserId(userId);
 		Region region = regionService.getRegionById(getRegionCoordinatesCommand.regionId());
 

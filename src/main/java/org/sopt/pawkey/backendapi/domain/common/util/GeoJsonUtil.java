@@ -15,6 +15,11 @@ import org.locationtech.jts.geom.Polygon;
 
 public class GeoJsonUtil {
 	public static Map<String, Object> toGeoJson(Geometry geometry) {
+
+		if (geometry == null) {
+			return null;
+		}
+
 		if (geometry instanceof MultiPolygon) {
 			return multiPolygonToGeoJson((MultiPolygon) geometry);
 		} else if (geometry instanceof Polygon) {

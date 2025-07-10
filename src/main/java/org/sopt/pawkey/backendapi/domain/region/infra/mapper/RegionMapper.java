@@ -1,6 +1,7 @@
 package org.sopt.pawkey.backendapi.domain.region.infra.mapper;
 
 import org.sopt.pawkey.backendapi.domain.region.domain.model.Region;
+import org.sopt.pawkey.backendapi.domain.region.domain.vo.RegionArea;
 import org.sopt.pawkey.backendapi.domain.region.infra.persistence.entity.RegionEntity;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +17,7 @@ public class RegionMapper {
 		return RegionEntity.builder()
 			.regionType(domain.getRegionType())
 			.regionName(domain.getRegionName())
-			.areaGeometry(domain.getAreaGeometry())
+			.areaGeometry(domain.getArea().getMultiPolygon())
 			.build();
 	}
 
@@ -33,7 +34,7 @@ public class RegionMapper {
 		return Region.builder()
 			.regionType(entity.getRegionType())
 			.regionName(entity.getRegionName())
-			.areaGeometry(entity.getAreaGeometry())
+			.area(RegionArea.of(entity.getAreaGeometry()))
 			.parent(toDomain(entity.getParent()))
 			.build();
 	}
