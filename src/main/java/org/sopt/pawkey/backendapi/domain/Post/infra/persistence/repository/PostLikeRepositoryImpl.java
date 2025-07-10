@@ -11,18 +11,17 @@ import org.springframework.stereotype.Repository;
 @Repository
 @RequiredArgsConstructor
 public class PostLikeRepositoryImpl implements PostLikeRepository {
-	private final SpringDataPostLikeRepository jpaRepository;
+	private final SpringDataPostLikeRepository springDataPostLikeRepository;
 	private final PostLikeMapper postLikeMapper;
 
 	@Override
 	public PostLike save(PostLike postLike) {
 		PostLikeEntity entity = postLikeMapper.toEntity(postLike);
-		return postLikeMapper.toDomain(jpaRepository.save(entity));
+		return postLikeMapper.toDomain(springDataPostLikeRepository.save(entity));
 	}
 
 	@Override
-	public boolean existsByUserAndPost(Long userId, Long postId) {
-		return false;
-		// return jpaRepository.existsByUserIdAndPostId(userId, postId);
+	public boolean existsByUserUserIdAndPostPostId(Long userId, Long postId) {
+		return springDataPostLikeRepository.existsByUserUserIdAndPostPostId(userId, postId);
 	}
 }
