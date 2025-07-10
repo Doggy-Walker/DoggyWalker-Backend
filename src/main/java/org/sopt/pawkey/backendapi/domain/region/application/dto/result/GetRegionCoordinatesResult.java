@@ -3,7 +3,7 @@ package org.sopt.pawkey.backendapi.domain.region.application.dto.result;
 import java.util.Map;
 
 import org.sopt.pawkey.backendapi.domain.region.domain.model.Region;
-import org.sopt.pawkey.backendapi.domain.region.util.GeoJsonUtil;
+import org.sopt.pawkey.backendapi.domain.common.util.GeoJsonUtil;
 
 import lombok.Builder;
 

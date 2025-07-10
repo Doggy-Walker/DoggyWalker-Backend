@@ -1,4 +1,4 @@
-package org.sopt.pawkey.backendapi.domain.region.util;
+package org.sopt.pawkey.backendapi.domain.common.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
