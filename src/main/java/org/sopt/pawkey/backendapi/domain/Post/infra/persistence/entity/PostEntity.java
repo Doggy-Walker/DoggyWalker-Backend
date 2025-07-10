@@ -63,9 +63,23 @@ public class PostEntity extends BaseEntity {
 	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PostCategoryOptionTop3Entity> postCategoryOptionTop3EntityList = new ArrayList<>();
 
-	// public static PostEntity create(Long postId, String description, boolean isPublic,
-	// 	UserEntity user, RouteEntity route) {
-	// 	return new PostEntity(postId, description, isPublic, user, route,
-	// 		new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
-	// }
+	public static PostEntity create(
+		Long postId,
+		String description,
+		boolean isPublic,
+		UserEntity user,
+		RouteEntity route
+	) {
+		return new PostEntity(
+			postId,
+			description,
+			isPublic,
+			user,
+			route,
+			new ArrayList<>(),
+			new ArrayList<>(),
+			new ArrayList<>(),
+			new ArrayList<>()
+		);
+	}
 }

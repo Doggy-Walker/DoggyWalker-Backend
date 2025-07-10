@@ -26,16 +26,16 @@ class UserQueryRepositoryImplTest {
 	@Autowired
 	private UserRepository userRepository;
 
-	@BeforeEach
-	void setUp() {
-		IntStream.rangeClosed(1, 10).forEach(i -> {
-			userRepository.save(User.createUser("loginId" + i, "name" + i));
-		});
-
-		IntStream.rangeClosed(11, 20).forEach(i -> {
-			userRepository.save(User.createUser("loginId" + i, "another" + i));
-		});
-	}
+	// @BeforeEach
+	// void setUp() {
+	// 	IntStream.rangeClosed(1, 10).forEach(i -> {
+	// 		userRepository.save(User.createUser("loginId" + i, "name" + i));
+	// 	});
+	//
+	// 	IntStream.rangeClosed(11, 20).forEach(i -> {
+	// 		userRepository.save(User.createUser("loginId" + i, "another" + i));
+	// 	});
+	// }
 
 	@AfterEach
 	void tearDown() {

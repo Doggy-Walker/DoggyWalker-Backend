@@ -25,7 +25,8 @@ public class UserRepositoryImpl implements UserRepository {
 
 	@Override
 	public boolean existsByLoginId(final String loginId) {
-		return springDataUserRepository.existsByLoginId(loginId);
+		return false;
+		// return springDataUserRepository.existsByLoginId(loginId);
 	}
 
 	@Override

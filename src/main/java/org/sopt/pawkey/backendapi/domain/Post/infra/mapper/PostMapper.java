@@ -27,16 +27,12 @@ public class PostMapper {
 	}
 
 	public PostEntity toEntity(Post domain) {
-		return new PostEntity(
+		return PostEntity.create(
 			domain.getPostId(),
 			domain.getDescription(),
 			domain.getIsPublic(),
 			userMapper.toEntity(domain.getWriter()),
-			routeMapper.toEntity(domain.getRoute()),
-			null, // postLikeEntityList
-			null, // postSelectedCategoryOptionEntityList
-			null, // postImageEntityList
-			null  // postCategoryOptionTop3EntityList
+			routeMapper.toEntity(domain.getRoute())
 		);
 	}
 }
