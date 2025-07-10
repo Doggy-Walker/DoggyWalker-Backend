@@ -33,7 +33,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-@Builder(access = AccessLevel.PUBLIC)
 public class RegionEntity extends BaseEntity {
 
 	@Id
