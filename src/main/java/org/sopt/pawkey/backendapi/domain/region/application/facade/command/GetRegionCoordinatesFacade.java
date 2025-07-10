@@ -9,8 +9,6 @@ import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-
 import lombok.RequiredArgsConstructor;
 
 @Component

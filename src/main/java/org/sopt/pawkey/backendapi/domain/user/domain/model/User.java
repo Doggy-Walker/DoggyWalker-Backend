@@ -12,12 +12,12 @@ public class User {
 	private final String name;
 	private final String gender;
 	private final String region_id;
-	private int age;
-	private String loginId;
 	private final List<Long> petIds;
 	private final List<Long> postIds;
 	private final List<Long> reviewIds;
 	private final List<Long> postLikeIds;
+	private int age;
+	private String loginId;
 
 	@Builder
 	public User(Long userId, String name, String gender, String region_id, List<Long> petIds, List<Long> postIds,

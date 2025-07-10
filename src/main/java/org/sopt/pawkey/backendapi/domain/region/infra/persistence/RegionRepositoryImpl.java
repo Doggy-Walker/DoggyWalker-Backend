@@ -4,10 +4,7 @@ import java.util.Optional;
 
 import org.sopt.pawkey.backendapi.domain.region.domain.RegionRepository;
 import org.sopt.pawkey.backendapi.domain.region.domain.model.Region;
-import org.sopt.pawkey.backendapi.domain.region.exception.RegionBusinessException;
-import org.sopt.pawkey.backendapi.domain.region.exception.RegionErrorCode;
 import org.sopt.pawkey.backendapi.domain.region.infra.mapper.RegionMapper;
-import org.sopt.pawkey.backendapi.domain.region.infra.persistence.entity.RegionEntity;
 import org.springframework.stereotype.Repository;
 
 import lombok.RequiredArgsConstructor;

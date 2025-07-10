@@ -1,7 +1,6 @@
 package org.sopt.pawkey.backendapi.domain.region.application.dto.result;
 
 import java.util.Map;
-import java.util.Optional;
 
 import org.sopt.pawkey.backendapi.domain.region.domain.model.Region;
 

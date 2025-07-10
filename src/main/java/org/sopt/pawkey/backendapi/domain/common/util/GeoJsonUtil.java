@@ -21,13 +21,13 @@ public class GeoJsonUtil {
 		}
 
 		if (geometry instanceof MultiPolygon) {
-			return multiPolygonToGeoJson((MultiPolygon) geometry);
+			return multiPolygonToGeoJson((MultiPolygon)geometry);
 		} else if (geometry instanceof Polygon) {
-			return polygonToGeoJson((Polygon) geometry);
+			return polygonToGeoJson((Polygon)geometry);
 		} else if (geometry instanceof LineString) {
-			return lineStringToGeoJson((LineString) geometry);
+			return lineStringToGeoJson((LineString)geometry);
 		} else if (geometry instanceof Point) {
-			return pointToGeoJson((Point) geometry);
+			return pointToGeoJson((Point)geometry);
 		} else {
 			throw new IllegalArgumentException("Unsupported geometry type: " + geometry.getGeometryType());
 		}
@@ -36,7 +36,7 @@ public class GeoJsonUtil {
 	private static Map<String, Object> multiPolygonToGeoJson(MultiPolygon multiPolygon) {
 		List<List<List<List<Double>>>> coordinates = new ArrayList<>();
 		for (int i = 0; i < multiPolygon.getNumGeometries(); i++) {
-			Polygon polygon = (Polygon) multiPolygon.getGeometryN(i);
+			Polygon polygon = (Polygon)multiPolygon.getGeometryN(i);
 			coordinates.add(extractPolygonCoordinates(polygon));
 		}
 		Map<String, Object> geoJson = new LinkedHashMap<>();

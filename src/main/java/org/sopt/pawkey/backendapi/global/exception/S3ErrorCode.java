@@ -6,7 +6,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
-public enum S3ErrorCode implements ErrorCode{
+public enum S3ErrorCode implements ErrorCode {
 	EMPTY_FILE_EXCEPTION(HttpStatus.BAD_REQUEST, "S3_40001", "업로드할 파일이 비어있습니다."),
 	NO_FILE_EXTENSION(HttpStatus.BAD_REQUEST, "S3_40002", "파일 확장자가 없습니다."),
 	INVALID_FILE_EXTENSION(HttpStatus.BAD_REQUEST, "S3_40003", "지원하지 않는 파일 확장자입니다."),

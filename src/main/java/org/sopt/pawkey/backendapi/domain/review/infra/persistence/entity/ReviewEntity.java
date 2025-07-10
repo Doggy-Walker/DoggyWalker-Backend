@@ -45,7 +45,6 @@ public class ReviewEntity extends BaseEntity {
 	@JoinColumn(name = "route_id", nullable = false)
 	private RouteEntity route;
 
-
 	@OneToMany(mappedBy = "review", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ReviewSelectedCategoryOptionEntity> reviewSelectedCategoryOptionEntityList = new ArrayList<>();
 }

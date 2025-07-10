@@ -38,5 +38,4 @@ public class ReviewSelectedCategoryOptionEntity extends BaseEntity {
 	@JoinColumn(name = "category_option_id", nullable = false)
 	private CategoryOptionEntity categoryOption;
 
-
 }

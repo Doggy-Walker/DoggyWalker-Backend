@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 public class RegionServiceImpl implements RegionService {
 
 	private final RegionRepository regionRepository;
+
 	@Override
 	public Region getRegionById(Long regionId) {
 

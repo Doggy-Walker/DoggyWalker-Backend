@@ -1,9 +1,6 @@
 package org.sopt.pawkey.backendapi.global.constants;
 
 public final class AppConstants {
-	// Prevent instantiation
-	private AppConstants() {}
-
 	// 예시 상수들
 	public static final String API_PREFIX = "/api/v1";
 	public static final int DEFAULT_PAGE_SIZE = 10;
@@ -11,4 +8,8 @@ public final class AppConstants {
 	public static final String SYSTEM_USER = "SYSTEM";
 	public static final String JWT_HEADER = "Authorization";
 	public static final String TOKEN_PREFIX = "Bearer ";
+
+	// Prevent instantiation
+	private AppConstants() {
+	}
 }

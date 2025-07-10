@@ -5,8 +5,6 @@ import java.util.Optional;
 
 import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
 import org.sopt.pawkey.backendapi.domain.user.domain.repository.UserQueryRepository;
-import org.sopt.pawkey.backendapi.domain.user.exception.UserBusinessException;
-import org.sopt.pawkey.backendapi.domain.user.exception.UserErrorCode;
 import org.sopt.pawkey.backendapi.domain.user.infra.mapper.UserMapper;
 import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.QUserEntity;
 import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.UserEntity;

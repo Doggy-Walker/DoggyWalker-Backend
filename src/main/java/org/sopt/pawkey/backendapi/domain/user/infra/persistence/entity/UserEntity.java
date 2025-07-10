@@ -59,7 +59,6 @@ public class UserEntity extends BaseEntity {
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PostLikeEntity> postLikeEntityList = new ArrayList<>();
 
-
 	public static UserEntity createEntity(String name, String loginId) {
 		return null;
 
