@@ -10,3 +10,5 @@ public interface UserQueryRepository {
 
 	List<User> getUsersByNameLike(String name);
 }
+
+

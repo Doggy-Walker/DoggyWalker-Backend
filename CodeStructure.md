@@ -140,7 +140,6 @@ public class UserController {
 **역할**: 유스케이스 실행 및 서비스 조합
 
 #### Facade (파사드)
-
 ```java
 @Component
 public class UserFacade {
