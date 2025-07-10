@@ -31,8 +31,15 @@ public class PetTraitCategoryEntity extends BaseEntity {
 	private Long id;
 
 	@Column(name = "name", nullable = false, length = 50)
-	private String name;
+	private String categoryName;
 
 	@OneToMany(mappedBy = "petTraitCategory", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PetTraitOptionEntity> petTraitOptionEntityList = new ArrayList<>();
+
+	@Builder
+	public PetTraitCategoryEntity(Long id, String categoryName) {
+		this.id = id;
+		this.categoryName = categoryName;
+		this.petTraitOptionEntityList = new ArrayList<>();
+	}
 }

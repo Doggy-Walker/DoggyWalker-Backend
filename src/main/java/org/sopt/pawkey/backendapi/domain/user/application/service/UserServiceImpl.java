@@ -15,21 +15,6 @@ public class UserServiceImpl implements UserService {
 
 	private final UserRepository userRepository;
 
-	/**
-	 * @param request User 생성 request
-	 * @return user 도메인 모델
-	 */
-	@Override
-	public User createUser(final CreateUserCommand request) {
-		final String loginId = request.loginId();
-		final String name = request.name();
 
-		if (userRepository.existsByLoginId(loginId)) {
-			throw new UserBusinessException(UserErrorCode.USER_DUPLICATE_LOGIN_ID);
-		}
-
-		User user = User.createUser(loginId, name);
-
-		return userRepository.save(user);
-	}
 }
+

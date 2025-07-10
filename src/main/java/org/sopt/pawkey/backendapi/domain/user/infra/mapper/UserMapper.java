@@ -1,5 +1,6 @@
 package org.sopt.pawkey.backendapi.domain.user.infra.mapper;
 
+import org.sopt.pawkey.backendapi.domain.region.infra.mapper.RegionMapper;
 import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
 import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.UserEntity;
 import org.springframework.stereotype.Component;
@@ -12,11 +13,11 @@ public class UserMapper {
 
 		return new User(
 			entity.getUserId(),
+			entity.getLoginId(),
 			entity.getName(),
 			entity.getGender(),
 			entity.getAge(),
-			RegionMapper.toDomain(entity.getRegion()),  // 연관 객체도 Mapper로
-			entity.getLoginId()
+			RegionMapper.toDomain(entity.getRegion())  // 연관 객체 매핑
 		);
 	}
 
@@ -24,12 +25,12 @@ public class UserMapper {
 		if (user == null) return null;
 
 		return UserEntity.builder()
-			.userId(user.getUserId())                     // ← 수정
+			.userId(user.getId())
+			.loginId(user.getLoginId())
 			.name(user.getName())
-			.gender(user.getGender())                     // ← 수정
+			.gender(user.getGender())
 			.age(user.getAge())
 			.region(RegionMapper.toEntity(user.getRegion()))
-			.loginId(user.getLoginId())
 			.build();
 	}
 }

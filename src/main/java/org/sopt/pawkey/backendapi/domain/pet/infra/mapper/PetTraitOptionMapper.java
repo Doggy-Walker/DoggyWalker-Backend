@@ -1,6 +1,8 @@
 package org.sopt.pawkey.backendapi.domain.pet.infra.mapper;
 
+import org.sopt.pawkey.backendapi.domain.pet.domain.model.PetTraitCategory;
 import org.sopt.pawkey.backendapi.domain.pet.domain.model.PetTraitOption;
+import org.sopt.pawkey.backendapi.domain.pet.infra.persistence.entity.PetTraitCategoryEntity;
 import org.sopt.pawkey.backendapi.domain.pet.infra.persistence.entity.PetTraitOptionEntity;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +14,11 @@ public class PetTraitOptionMapper {
 
 		return new PetTraitOption(
 			entity.getId(),
-			PetTraitCategoryMapper.toDomain(entity.getPetTraitCategory()),
+			new PetTraitCategory(
+				entity.getPetTraitCategory().getId(),
+				null, // name은 필요하면
+				null  // Option 리스트는 null (순환 방지)
+			),
 			entity.getOptionText()
 		);
 	}
@@ -20,10 +26,15 @@ public class PetTraitOptionMapper {
 	public static PetTraitOptionEntity toEntity(PetTraitOption petTraitOption) {
 		if (petTraitOption == null) return null;
 
+
+		// PetTraitCategoryEntity 의 최소한의 객체 생성 (ID만 세팅)
+		PetTraitCategoryEntity minimalCategoryEntity = PetTraitCategoryEntity.builder()
+			.id(petTraitOption.getPetTraitCategory().getId())
+			.build();
 		return PetTraitOptionEntity.builder()
-			.id(domain.getId())
-			.petTraitCategory(PetTraitCategoryMapper.toEntity(domain.getPetTraitCategory()))
-			.optionText(domain.getOptionText())
+			.id(petTraitOption.getId())
+			.petTraitCategory(minimalCategoryEntity)
+			.optionText(petTraitOption.getOptionText())
 			.build();
 	}
 }
