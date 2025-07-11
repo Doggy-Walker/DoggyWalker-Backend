@@ -42,6 +42,7 @@ public class RegionMapper {
 		}
 
 		return Region.builder()
+			.regionId(entity.getRegionId())
 			.regionType(entity.getRegionType())
 			.regionName(entity.getRegionName())
 			.area(RegionArea.of(entity.getAreaGeometry()))
