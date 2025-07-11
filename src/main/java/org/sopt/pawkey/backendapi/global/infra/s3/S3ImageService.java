@@ -7,6 +7,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -34,14 +35,12 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Service
 public class S3ImageService implements ImageStorage {
-	private final AmazonS3 amazonS3;
-
-	@Value("${cloud.aws.s3.bucket}")
-	private String bucketName;
-
 	private static final String PROFILE_DIR = "profile";
 	private static final String ROUTE_DIR = "route";
 	private static final String WALK_DIR = "walk";
+	private final AmazonS3 amazonS3;
+	@Value("${cloud.aws.s3.bucket}")
+	private String bucketName;
 
 	@Override
 	public String uploadProfileImage(MultipartFile image) {
@@ -135,9 +134,9 @@ public class S3ImageService implements ImageStorage {
 	private String getKeyFromImageAddress(String imageAddress) {
 		try {
 			URL url = new URL(imageAddress);
-			String decodingKey = URLDecoder.decode(url.getPath(), "UTF-8");
+			String decodingKey = URLDecoder.decode(url.getPath(), StandardCharsets.UTF_8);
 			return decodingKey.substring(1);
-		} catch (MalformedURLException | UnsupportedEncodingException e) {
+		} catch (MalformedURLException e) {
 			throw new S3BusinessException(S3ErrorCode.IO_EXCEPTION_ON_IMAGE_DELETE);
 		}
 	}

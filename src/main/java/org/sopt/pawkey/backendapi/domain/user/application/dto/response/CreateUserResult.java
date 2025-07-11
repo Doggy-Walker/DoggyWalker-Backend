@@ -9,6 +9,6 @@ public record CreateUserResult(
 ) {
 
 	public static CreateUserResult from(final User user) {
-		return new CreateUserResult(user.getId(), user.getName(), user.getLoginId());
+		return new CreateUserResult(user.getUserId(), user.getName(), user.getLoginId());
 	}
 }

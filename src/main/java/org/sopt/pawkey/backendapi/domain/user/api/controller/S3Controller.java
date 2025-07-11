@@ -18,7 +18,7 @@ public class S3Controller {
 	private final ImageStorage s3ImageService;
 
 	@PostMapping("/upload/profile")
-	public ResponseEntity<String> uploadProfileImage(@RequestParam("image") MultipartFile image){
+	public ResponseEntity<String> uploadProfileImage(@RequestParam("image") MultipartFile image) {
 		String url = s3ImageService.uploadProfileImage(image);
 		return ResponseEntity.ok(url);
 	}

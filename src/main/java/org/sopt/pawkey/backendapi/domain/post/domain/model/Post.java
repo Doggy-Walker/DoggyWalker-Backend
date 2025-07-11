@@ -1,7 +1,5 @@
 package org.sopt.pawkey.backendapi.domain.post.domain.model;
 
-import java.time.LocalDateTime;
-
 import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
 
 import lombok.Getter;

@@ -1,6 +1,7 @@
 package org.sopt.pawkey.backendapi.domain.user.infra.persistence;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
 import org.sopt.pawkey.backendapi.domain.user.domain.repository.UserQueryRepository;
@@ -47,5 +48,18 @@ public class UserQueryRepositoryImpl implements UserQueryRepository {
 		return userEntities.stream()
 			.map(userMapper::toDomain)
 			.toList();
+	}
+
+	@Override
+	public Optional<User> getUserByUserId(Long userId) {
+		QUserEntity userEntity = QUserEntity.userEntity;
+
+		UserEntity found = jpaQueryFactory
+			.selectFrom(userEntity)
+			.where(userEntity.userId.eq(userId))
+			.fetchOne();
+
+		return Optional.ofNullable(found)
+			.map(userMapper::toDomain);
 	}
 }

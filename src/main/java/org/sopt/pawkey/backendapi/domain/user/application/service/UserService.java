@@ -6,4 +6,6 @@ import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
 public interface UserService {
 
 	User createUser(final CreateUserCommand request);
+
+	User getByUserId(final Long userId);
 }

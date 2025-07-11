@@ -9,7 +9,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public enum UserErrorCode implements ErrorCode {
 
-	USER_DUPLICATE_LOGIN_ID(HttpStatus.CONFLICT, "U40900", "중복된 로그인 아이디입니다.");
+	USER_DUPLICATE_LOGIN_ID(HttpStatus.CONFLICT, "U40901", "중복된 로그인 아이디입니다."),
+	USER_NOT_FOUND(HttpStatus.NOT_FOUND, "U40401", "유저를 찾을 수 없습니다.");
 
 	private final HttpStatus status;
 	private final String code;
