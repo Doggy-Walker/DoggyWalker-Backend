@@ -1,5 +1,6 @@
 package org.sopt.pawkey.backendapi.global.exception.handler;
 
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.sopt.pawkey.backendapi.global.exception.BusinessException;
@@ -112,7 +113,7 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<ApiResponse<Void>> handleMediaTypeNotSupported(HttpMediaTypeNotSupportedException ex) {
 		String msg = String.format("지원하지 않는 미디어 타입입니다. 허용된 타입: %s",
 			String.join(", ", ex.getSupportedMediaTypes().stream()
-				.map(Void::toString).toList()));
+				.map(Objects::toString).toList()));
 		log.warn("Media type not supported: {}", ex.getContentType());
 
 		return ResponseEntity.status(ResponseCode.BAD_REQUEST.getStatus())
