@@ -1,4 +1,3 @@
-// PostLikeRepositoryImpl.java
 package org.sopt.pawkey.backendapi.domain.post.infra.persistence.repository;
 
 import java.util.Optional;
