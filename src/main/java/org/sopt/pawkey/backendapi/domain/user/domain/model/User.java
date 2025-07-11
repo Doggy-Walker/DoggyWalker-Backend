@@ -11,7 +11,7 @@ public class User {
 	private final Long userId;
 	private final String name;
 	private final String gender;
-	private final String region_id;
+	private final String regionId;
 	private final List<Long> petIds;
 	private final List<Long> postIds;
 	private final List<Long> reviewIds;
@@ -20,12 +20,12 @@ public class User {
 	private final String loginId;
 
 	@Builder
-	public User(Long userId, String name, String gender, String region_id, List<Long> petIds, List<Long> postIds,
+	public User(Long userId, String name, String gender, String regionId, List<Long> petIds, List<Long> postIds,
 		List<Long> reviewIds, List<Long> postLikeIds, String loginId, int age) {
 		this.userId = userId;
 		this.name = name;
 		this.gender = gender;
-		this.region_id = region_id;
+		this.regionId = regionId;
 		this.petIds = petIds;
 		this.postIds = postIds;
 		this.reviewIds = reviewIds;
