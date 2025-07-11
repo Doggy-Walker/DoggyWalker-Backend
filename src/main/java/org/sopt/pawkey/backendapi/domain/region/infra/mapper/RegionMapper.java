@@ -13,6 +13,9 @@ public class RegionMapper {
 	 * @return Region 엔티티
 	 */
 	public RegionEntity toEntity(Region domain) {
+		if (domain == null) {
+			return null;
+		}
 
 		return RegionEntity.builder()
 			.regionType(domain.getRegionType())
