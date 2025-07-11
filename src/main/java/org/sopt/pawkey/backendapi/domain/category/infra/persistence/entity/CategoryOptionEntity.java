@@ -31,6 +31,9 @@ public class CategoryOptionEntity extends BaseEntity {
 	@Column(name = "option_text", nullable = false)
 	private String optionText;
 
+	@Column(name = "option_text_summary", nullable = false)
+	private String optionSummary;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "category_id", nullable = false)
 	private CategoryEntity category;

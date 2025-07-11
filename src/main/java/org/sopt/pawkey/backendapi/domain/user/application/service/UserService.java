@@ -1,11 +1,11 @@
 package org.sopt.pawkey.backendapi.domain.user.application.service;
 
-import org.sopt.pawkey.backendapi.domain.user.application.dto.request.CreateUserCommand;
 import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
 
 public interface UserService {
+	User getByUserId(Long userId);
 
-	User createUser(final CreateUserCommand request);
+	User findById(Long userId);
 
-	User findById(final Long id);
+	//User createUser(final CreateUserCommand request);
 }

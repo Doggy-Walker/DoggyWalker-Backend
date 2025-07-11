@@ -1,6 +1,9 @@
 package org.sopt.pawkey.backendapi.domain.post.api.controller;
 
+import static org.sopt.pawkey.backendapi.global.constants.AppConstants.*;
+
 import org.sopt.pawkey.backendapi.domain.post.application.facade.command.PostLikeFacade;
+import org.sopt.pawkey.backendapi.global.constants.AppConstants;
 import org.sopt.pawkey.backendapi.global.response.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/likes")
+@RequestMapping(API_PREFIX + "/likes")
 public class PostLikeController {
 
 	private final PostLikeFacade postLikeFacade;
@@ -32,7 +35,7 @@ public class PostLikeController {
 	@PostMapping("/{postId}")
 	public ResponseEntity<ApiResponse<Void>> like(
 		@PathVariable Long postId,
-		@RequestHeader("X-USER-ID") @NotNull Integer userId
+		@RequestHeader(USER_ID_HEADER) @NotNull Integer userId
 	) {
 		postLikeFacade.like(postId, userId.longValue());
 		return ResponseEntity.ok(ApiResponse.success(null));

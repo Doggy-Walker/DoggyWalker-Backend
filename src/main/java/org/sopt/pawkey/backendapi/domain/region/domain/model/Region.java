@@ -1,19 +1,28 @@
 package org.sopt.pawkey.backendapi.domain.region.domain.model;
 
+import java.util.List;
+
+import org.sopt.pawkey.backendapi.domain.region.domain.vo.RegionArea;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 @Getter
+@Builder
+@AllArgsConstructor
 public class Region {
+	private final Long regionId;
+	private RegionType regionType;
+	private String regionName;
+	private Region parent;
+	private List<Region> children;
+	private RegionArea area;
 
-	private final Long id;
-	private final RegionType regionType;
-	private final String regionName;
-	private final Long parentId;
+	public String getFullRegionName() {
+		String parentText = parent == null ? "" : parent.getRegionName() + " ";
 
-	protected Region(Long id, RegionType regionType, String regionName, Long parentId) {
-		this.id = id;
-		this.regionType = regionType;
-		this.regionName = regionName;
-		this.parentId = parentId;
+		return parentText + regionName;
 	}
 }

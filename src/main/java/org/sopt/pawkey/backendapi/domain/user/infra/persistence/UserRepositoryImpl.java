@@ -15,14 +15,13 @@ import lombok.RequiredArgsConstructor;
 public class UserRepositoryImpl implements UserRepository {
 
 	private final SpringDataUserRepository springDataUserRepository;
-	private final UserMapper userMapper;
 
 	@Override
 	public User save(final User user) {
-		UserEntity entity = userMapper.toEntity(user);
+		UserEntity entity = UserMapper.toEntity(user);
 		UserEntity saved = springDataUserRepository.save(entity);
 
-		return userMapper.toDomain(saved);
+		return UserMapper.toDomain(saved);
 	}
 
 	@Override
@@ -38,6 +37,6 @@ public class UserRepositoryImpl implements UserRepository {
 
 	@Override
 	public Optional<User> findById(Long id) {
-		return springDataUserRepository.findById(id).map(userMapper::toDomain);
+		return springDataUserRepository.findById(id).map(UserMapper::toDomain);
 	}
 }

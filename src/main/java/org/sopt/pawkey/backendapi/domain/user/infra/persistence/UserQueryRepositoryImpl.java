@@ -1,6 +1,7 @@
 package org.sopt.pawkey.backendapi.domain.user.infra.persistence;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
 import org.sopt.pawkey.backendapi.domain.user.domain.repository.UserQueryRepository;
@@ -21,31 +22,15 @@ public class UserQueryRepositoryImpl implements UserQueryRepository {
 	private final UserMapper userMapper;
 
 	@Override
-	public List<User> getUsers() {
+	public Optional<User> getUserByUserId(Long userId) {
 		QUserEntity userEntity = QUserEntity.userEntity;
 
-		List<UserEntity> userEntities = jpaQueryFactory
+		UserEntity found = jpaQueryFactory
 			.selectFrom(userEntity)
-			.orderBy(userEntity.userId.desc())
-			.fetch();
+			.where(userEntity.userId.eq(userId))
+			.fetchOne();
 
-		return userEntities.stream()
-			.map(userMapper::toDomain)
-			.toList();
-	}
-
-	@Override
-	public List<User> getUsersByNameLike(String name) {
-		QUserEntity userEntity = QUserEntity.userEntity;
-
-		List<UserEntity> userEntities = jpaQueryFactory
-			.selectFrom(userEntity)
-			.where(userEntity.name.like("%" + name + "%"))
-			.orderBy(userEntity.userId.desc())
-			.fetch();
-
-		return userEntities.stream()
-			.map(userMapper::toDomain)
-			.toList();
+		return Optional.ofNullable(found)
+			.map(UserMapper::toDomain);
 	}
 }

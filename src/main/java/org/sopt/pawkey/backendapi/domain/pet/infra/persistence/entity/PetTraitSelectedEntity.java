@@ -12,7 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -20,7 +20,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "pet_trait_selected")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class PetTraitSelectedEntity extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,4 +35,13 @@ public class PetTraitSelectedEntity extends BaseEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "pet_trait_option_id")
 	private PetTraitOptionEntity petTraitOption;
+
+	@Builder
+	public PetTraitSelectedEntity(Long id,
+		PetEntity pet,
+		PetTraitOptionEntity petTraitOption) {
+		this.id = id;
+		this.pet = pet;
+		this.petTraitOption = petTraitOption;
+	}
 }

@@ -1,11 +1,11 @@
 package org.sopt.pawkey.backendapi.domain.user.application.service;
 
-import org.sopt.pawkey.backendapi.domain.user.application.dto.request.CreateUserCommand;
 import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
+import org.sopt.pawkey.backendapi.domain.user.domain.repository.UserQueryRepository;
 import org.sopt.pawkey.backendapi.domain.user.domain.repository.UserRepository;
 import org.sopt.pawkey.backendapi.domain.user.exception.UserBusinessException;
 import org.sopt.pawkey.backendapi.domain.user.exception.UserErrorCode;
-import org.sopt.pawkey.backendapi.domain.user.infra.mapper.UserMapper;
+import org.sopt.pawkey.backendapi.global.exception.BusinessException;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -14,24 +14,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
+	private final UserQueryRepository userQueryRepository;
 	private final UserRepository userRepository;
 
-	/**
-	 * @param request User 생성 request
-	 * @return user 도메인 모델
-	 */
 	@Override
-	public User createUser(final CreateUserCommand request) {
-		final String loginId = request.loginId();
-		final String name = request.name();
-
-		if (userRepository.existsByLoginId(loginId)) {
-			throw new UserBusinessException(UserErrorCode.USER_DUPLICATE_LOGIN_ID);
-		}
-
-		//User user = User.createUser(loginId, name);
-
-		return null;
+	public User getByUserId(Long userId) {
+		return userQueryRepository.getUserByUserId(userId)
+			.orElseThrow(() -> new UserBusinessException(UserErrorCode.USER_NOT_FOUND));
 	}
 
 	public User findById(final Long id) {
@@ -39,3 +28,4 @@ public class UserServiceImpl implements UserService {
 			.orElseThrow(() -> new UserBusinessException(UserErrorCode.USER_NOT_FOUND));
 	}
 }
+

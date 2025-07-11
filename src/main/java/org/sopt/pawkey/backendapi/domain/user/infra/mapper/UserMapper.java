@@ -1,38 +1,38 @@
 package org.sopt.pawkey.backendapi.domain.user.infra.mapper;
 
+import org.sopt.pawkey.backendapi.domain.region.infra.mapper.RegionMapper;
 import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
 import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.UserEntity;
 import org.springframework.stereotype.Component;
 
-@Component
-public class UserMapper {
-	/**
-	 * 데이터베이스 인프라와 통신하기 위한 객체로 변경
-	 * @param domain 유저 도메인 모델
-	 * @return 유저 엔티티
-	 */
-	public UserEntity toEntity(User domain) {
-		return UserEntity.builder()
-			.userId(domain.getUserId())
-			.name(domain.getName())
-			.gender(domain.getGender())
-			.age(domain.getAge())
-			.region(domain.getRegion())
-			.build();
-	}
-	/**
-	 * 데이터베이스 엔티티를 도메인 로직에서 사용하기 위한 도메인 모델로 변경
-	 * @param entity 유저 엔티티
-	 * @return 유저 도메인 모델
-	 */
-	public User toDomain(UserEntity entity) {
+import lombok.RequiredArgsConstructor;
 
-		return User.createUser(
+@Component
+@RequiredArgsConstructor
+public class UserMapper {
+	public static User toDomain(UserEntity entity) {
+		if (entity == null)
+			return null;
+
+		return new User(
 			entity.getUserId(),
 			entity.getName(),
 			entity.getGender(),
 			entity.getAge(),
-			entity.getRegion()
+			RegionMapper.toDomain(entity.getRegion())  // 연관 객체 매핑
 		);
+	}
+
+	public static UserEntity toEntity(User user) {
+		if (user == null)
+			return null;
+
+		return UserEntity.builder()
+			.userId(user.getUserId())
+			.name(user.getName())
+			.gender(user.getGender())
+			.age(user.getAge())
+			.region(RegionMapper.toEntity(user.getRegion()))
+			.build();
 	}
 }
