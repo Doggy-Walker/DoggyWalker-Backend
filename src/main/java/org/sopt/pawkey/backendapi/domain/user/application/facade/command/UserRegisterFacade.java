@@ -4,7 +4,6 @@ package org.sopt.pawkey.backendapi.domain.user.application.facade.command;
 // import org.sopt.pawkey.backendapi.domain.user.application.dto.response.CreateUserResult;
 
 import org.sopt.pawkey.backendapi.domain.user.application.service.UserService;
-import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
 import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;

@@ -1,19 +1,9 @@
 package org.sopt.pawkey.backendapi.domain.user.api.controller;
 
-import org.sopt.pawkey.backendapi.domain.user.api.dto.request.CreateUserRequestDto;
-// import org.sopt.pawkey.backendapi.domain.user.api.dto.response.CreateUserResponseDto;
 import org.sopt.pawkey.backendapi.domain.user.application.facade.command.UserRegisterFacade;
-import org.sopt.pawkey.backendapi.global.response.ApiResponse;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController

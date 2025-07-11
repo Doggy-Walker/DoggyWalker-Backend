@@ -1,7 +1,6 @@
 package org.sopt.pawkey.backendapi.domain.post.application.service;
 
 import org.sopt.pawkey.backendapi.domain.post.domain.model.Post;
-import org.sopt.pawkey.backendapi.domain.user.application.dto.request.CreateUserCommand;
 import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
 
 public interface PostLikeService {

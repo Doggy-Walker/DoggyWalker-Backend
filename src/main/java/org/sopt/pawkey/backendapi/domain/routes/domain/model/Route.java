@@ -1,7 +1,6 @@
 package org.sopt.pawkey.backendapi.domain.routes.domain.model;
 
 import org.locationtech.jts.geom.LineString;
-import org.sopt.pawkey.backendapi.domain.region.domain.model.Region;
 import org.sopt.pawkey.backendapi.domain.region.infra.persistence.entity.RegionEntity;
 
 import lombok.Getter;

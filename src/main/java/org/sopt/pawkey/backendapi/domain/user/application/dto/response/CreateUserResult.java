@@ -1,7 +1,5 @@
 package org.sopt.pawkey.backendapi.domain.user.application.dto.response;
 
-import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
-
 // public record CreateUserResult(
 // 	Long id,
 // 	String userName,

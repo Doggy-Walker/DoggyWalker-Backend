@@ -1,14 +1,14 @@
 // PostLikeRepositoryImpl.java
 package org.sopt.pawkey.backendapi.domain.post.infra.persistence.repository;
 
-import lombok.RequiredArgsConstructor;
 import org.sopt.pawkey.backendapi.domain.post.domain.model.PostLike;
 import org.sopt.pawkey.backendapi.domain.post.domain.repository.PostLikeRepository;
 import org.sopt.pawkey.backendapi.domain.post.infra.mapper.PostLikeMapper;
 import org.sopt.pawkey.backendapi.domain.post.infra.mapper.PostMapper;
-import org.sopt.pawkey.backendapi.domain.post.infra.persistence.entity.PostLikeEntity;
 import org.sopt.pawkey.backendapi.domain.user.infra.mapper.UserMapper;
 import org.springframework.stereotype.Repository;
+
+import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor

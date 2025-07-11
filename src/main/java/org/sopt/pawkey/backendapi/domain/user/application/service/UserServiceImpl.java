@@ -6,7 +6,6 @@ import org.sopt.pawkey.backendapi.domain.user.domain.repository.UserRepository;
 import org.sopt.pawkey.backendapi.domain.user.exception.UserBusinessException;
 import org.sopt.pawkey.backendapi.domain.user.exception.UserErrorCode;
 import org.sopt.pawkey.backendapi.domain.user.infra.mapper.UserMapper;
-import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.UserEntity;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
