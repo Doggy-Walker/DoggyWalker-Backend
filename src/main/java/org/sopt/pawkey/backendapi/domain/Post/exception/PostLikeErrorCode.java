@@ -5,8 +5,8 @@ import org.springframework.http.HttpStatus;
 
 public enum PostLikeErrorCode implements ErrorCode {
 
-	DUPLICATE_LIKE("PL001", "이미 좋아요를 누른 게시글입니다.", HttpStatus.CONFLICT),
-	CANNOT_LIKE_OWN_POST("PL002", "자신의 게시글에는 좋아요를 누를 수 없습니다.", HttpStatus.BAD_REQUEST);
+	DUPLICATE_LIKE("PL40901", "이미 좋아요를 누른 게시글입니다.", HttpStatus.CONFLICT),
+	CANNOT_LIKE_OWN_POST("PL40001", "자신의 게시글에는 좋아요를 누를 수 없습니다.", HttpStatus.BAD_REQUEST);
 
 	private final String code;
 	private final String message;
