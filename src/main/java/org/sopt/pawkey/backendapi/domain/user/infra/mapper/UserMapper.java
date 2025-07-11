@@ -16,7 +16,6 @@ public class UserMapper {
 
 		return new User(
 			entity.getUserId(),
-			entity.getLoginId(),
 			entity.getName(),
 			entity.getGender(),
 			entity.getAge(),
@@ -29,8 +28,7 @@ public class UserMapper {
 			return null;
 
 		return UserEntity.builder()
-			.userId(user.getId())
-			.loginId(user.getLoginId())
+			.userId(user.getUserId())
 			.name(user.getName())
 			.gender(user.getGender())
 			.age(user.getAge())

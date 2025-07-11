@@ -10,8 +10,7 @@ import lombok.Getter;
 
 public class User {
 
-	private final Long id;
-	private final String loginId;
+	private final Long userId;
 	private final String name;
 	private final String gender;
 	private final int age;

@@ -6,6 +6,7 @@ import org.sopt.pawkey.backendapi.domain.region.api.dto.GetRegionCoordinatesResp
 import org.sopt.pawkey.backendapi.domain.region.application.dto.command.GetRegionCoordinatesCommand;
 import org.sopt.pawkey.backendapi.domain.region.application.dto.result.GetRegionCoordinatesResult;
 import org.sopt.pawkey.backendapi.domain.region.application.facade.command.GetRegionCoordinatesFacade;
+import org.sopt.pawkey.backendapi.global.constants.AppConstants;
 import org.sopt.pawkey.backendapi.global.exception.BusinessException;
 import org.sopt.pawkey.backendapi.global.response.ApiResponse;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +35,7 @@ public class RegionController {
 		@io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "지역 범위 좌표 조회"),
 		@io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "조회 실패 (U40401 또는 R40401 에러코드 확인)", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BusinessException.class)))})
 	public ResponseEntity<ApiResponse<GetRegionCoordinatesResponse>> getRegionCoordinates(
-		@RequestHeader("userId") Long userId,
+		@RequestHeader(AppConstants.USER_ID_HEADER) Long userId,
 		@PathVariable("regionId") Long regionId
 	) {
 

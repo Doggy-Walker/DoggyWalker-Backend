@@ -1,24 +1,30 @@
 package org.sopt.pawkey.backendapi.domain.post.infra.mapper;
 
+import org.sopt.pawkey.backendapi.domain.post.domain.model.PostLike;
+import org.sopt.pawkey.backendapi.domain.post.infra.persistence.entity.PostLikeEntity;
+import org.sopt.pawkey.backendapi.domain.user.infra.mapper.UserMapper;
 import org.springframework.stereotype.Component;
 
-@Component
+import lombok.RequiredArgsConstructor;
 
+@Component
+@RequiredArgsConstructor
 public class PostLikeMapper {
 
-	// public static PostLike toDomain(PostLikeEntity entity) {
-	// 	return PostLike.of(
-	// 		entity.getPost_like_id(),
-	// 		PostMapper.toDomain(entity.getPost()),
-	// 		UserMapper.toDomain(entity.getUser())
-	// 	);
-	// }
-	//
-	// public static PostLikeEntity toEntity(PostLike postLike) {
-	// 	return PostLikeEntity.builder()
-	// 		.post_like_id(postLike.getPostLikeId())
-	// 		.post(PostMapper.toEntity(postLike.getPost()))
-	// 		.user(UserMapper.toEntity(postLike.getUser()))
-	// 		.build();
-	// }
+	private final PostMapper postMapper;
+	private final UserMapper userMapper;
+
+	public PostLikeEntity toEntity(PostLike domain) {
+		return PostLikeEntity.builder()
+			.user(userMapper.toEntity(domain.getUser()))
+			.post(postMapper.toEntity(domain.getPost()))
+			.build();
+	}
+
+	public PostLike toDomain(PostLikeEntity entity) {
+		return PostLike.createPostLike(
+			postMapper.toDomain(entity.getPost()),
+			userMapper.toDomain(entity.getUser())
+		);
+	}
 }

@@ -31,6 +31,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder
 public class UserEntity extends BaseEntity {
 
 	@Id
@@ -44,8 +45,6 @@ public class UserEntity extends BaseEntity {
 	@JoinColumn(name = "region_id")
 	private RegionEntity region;
 
-	private String loginId;
-
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PetEntity> petEntityList = new ArrayList<>();
 
@@ -58,20 +57,18 @@ public class UserEntity extends BaseEntity {
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PostLikeEntity> postLikeEntityList = new ArrayList<>();
 
-
 	@Builder
 	public UserEntity(Long userId,
 		String name,
 		String gender,
 		int age,
-		RegionEntity region,
-		String loginId) {
+		RegionEntity region) {
 		this.userId = userId;
 		this.name = name;
 		this.gender = gender;
 		this.age = age;
 		this.region = region;
-		this.loginId = loginId;
 	}
 
 }
+

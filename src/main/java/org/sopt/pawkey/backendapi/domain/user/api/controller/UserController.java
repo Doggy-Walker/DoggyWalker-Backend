@@ -17,7 +17,7 @@
 //
 // @RestController
 // @RequiredArgsConstructor
-// @RequestMapping("/api/v1/users")
+// @RequestMapping(API_PREFIX + "/users")
 // public class UserController {
 //
 // 	private final UserRegisterFacade userRegisterFacade;

@@ -17,6 +17,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -25,6 +26,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder
 public class RouteEntity extends BaseEntity {
 
 	@Id
@@ -41,16 +43,16 @@ public class RouteEntity extends BaseEntity {
 	@Column(name = "duration", nullable = false)
 	private Integer duration;
 
-	@Column(name = "started_at", nullable = false)
-	private LocalDateTime startedAt;
-
-	@Column(name = "ended_at", nullable = false)
-	private LocalDateTime endedAt;
-
 	@Column(name = "step_count", nullable = false)
 	private Integer stepCount;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "region_id", nullable = false)
 	private RegionEntity region;
+
+	@Column(name = "started_at", nullable = false)
+	private LocalDateTime startedAt;
+
+	@Column(name = "ended_at", nullable = false)
+	private LocalDateTime endedAt;
 }

@@ -18,7 +18,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,16 +25,18 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "posts")
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
+@AllArgsConstructor
 public class PostEntity extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "post_id")
 	private Long postId;
 
-	@Column(name = "description", columnDefinition = "TEXT")
+	@Column(name = "title", columnDefinition = "TEXT")
+	private String title;
 
+	@Column(name = "description", columnDefinition = "TEXT")
 	private String description;
 
 	@Column(name = "is_public", nullable = false)
@@ -61,4 +62,26 @@ public class PostEntity extends BaseEntity {
 
 	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PostCategoryOptionTop3Entity> postCategoryOptionTop3EntityList = new ArrayList<>();
+
+	public static PostEntity create(
+		Long postId,
+		String title,
+		String description,
+		boolean isPublic,
+		UserEntity user,
+		RouteEntity route
+	) {
+		return new PostEntity(
+			postId,
+			title,
+			description,
+			isPublic,
+			user,
+			route,
+			new ArrayList<>(),
+			new ArrayList<>(),
+			new ArrayList<>(),
+			new ArrayList<>()
+		);
+	}
 }

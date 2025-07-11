@@ -8,6 +8,7 @@ public final class AppConstants {
 	public static final String SYSTEM_USER = "SYSTEM";
 	public static final String JWT_HEADER = "Authorization";
 	public static final String TOKEN_PREFIX = "Bearer ";
+	public static final String USER_ID_HEADER = "X-USER-ID";
 
 	// Prevent instantiation
 	private AppConstants() {
