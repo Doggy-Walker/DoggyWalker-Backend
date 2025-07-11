@@ -20,7 +20,6 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/v1/pet/traits")
 public class PetController {
 
-	private final PetService petService;
 	private final PetQueryService petQueryService;
 
 	@GetMapping("/categories")
