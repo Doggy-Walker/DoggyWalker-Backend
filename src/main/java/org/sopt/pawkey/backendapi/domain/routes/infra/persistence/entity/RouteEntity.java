@@ -1,5 +1,7 @@
 package org.sopt.pawkey.backendapi.domain.routes.infra.persistence.entity;
 
+import java.time.LocalDateTime;
+
 import org.locationtech.jts.geom.LineString;
 import org.sopt.pawkey.backendapi.domain.region.infra.persistence.entity.RegionEntity;
 import org.sopt.pawkey.backendapi.global.infra.persistence.entity.BaseEntity;
@@ -47,4 +49,10 @@ public class RouteEntity extends BaseEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "region_id", nullable = false)
 	private RegionEntity region;
+
+	@Column(name = "started_at", nullable = false)
+	private LocalDateTime startedAt;
+
+	@Column(name = "ended_at", nullable = false)
+	private LocalDateTime endedAt;
 }

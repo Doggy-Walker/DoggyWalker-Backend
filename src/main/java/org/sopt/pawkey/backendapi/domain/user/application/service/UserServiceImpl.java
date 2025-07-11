@@ -15,7 +15,6 @@ import lombok.RequiredArgsConstructor;
 public class UserServiceImpl implements UserService {
 
 	private final UserRepository userRepository;
-	private final UserMapper userMapper;
 
 	/**
 	 * @param request User 생성 request
