@@ -1,4 +1,6 @@
-package org.sopt.pawkey.backendapi.domain.common.util;
+package org.sopt.pawkey.backendapi.global.util;
+
+import static org.sopt.pawkey.backendapi.global.enums.GeometryType.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,13 +14,9 @@ import org.locationtech.jts.geom.LineString;
 import org.locationtech.jts.geom.MultiPolygon;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.Polygon;
+import org.sopt.pawkey.backendapi.global.enums.GeometryType;
 
 public class GeoJsonUtil {
-	private static final String POLYGON = "Polygon";
-	private static final String LINESTRING = "LineString";
-	private static final String POINT = "Point";
-	private static final String MULTIPOLYGON = "MultiPolygon";
-
 	public static Map<String, Object> toGeoJson(Geometry geometry) {
 
 		if (geometry == null) {
@@ -45,24 +43,24 @@ public class GeoJsonUtil {
 			coordinates.add(extractPolygonCoordinates(polygon));
 		}
 
-		return generateGeoJsonMap(MULTIPOLYGON, coordinates);
+		return generateGeoJsonMap(MULTIPOLYGON.getText(), coordinates);
 	}
 
 	private static Map<String, Object> polygonToGeoJson(Polygon polygon) {
 		List<List<List<Double>>> coordinates = extractPolygonCoordinates(polygon);
 
-		return generateGeoJsonMap(POLYGON, coordinates);
+		return generateGeoJsonMap(POLYGON.getText(), coordinates);
 	}
 
 	private static Map<String, Object> lineStringToGeoJson(LineString line) {
 		List<List<Double>> coordinates = extractLineStringCoordinates(line);
 
-		return generateGeoJsonMap(LINESTRING, coordinates);
+		return generateGeoJsonMap(LINESTRING.getText(), coordinates);
 	}
 
 	private static Map<String, Object> pointToGeoJson(Point point) {
 
-		return generateGeoJsonMap(POINT, Arrays.asList(point.getX(), point.getY()));
+		return generateGeoJsonMap(POINT.getText(), Arrays.asList(point.getX(), point.getY()));
 	}
 
 	private static List<List<List<Double>>> extractPolygonCoordinates(Polygon polygon) {
