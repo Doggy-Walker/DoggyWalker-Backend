@@ -4,4 +4,5 @@ import org.sopt.pawkey.backendapi.domain.post.infra.persistence.entity.PostLikeE
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SpringDataPostLikeRepository extends JpaRepository<PostLikeEntity, Long> {
-	boolean existsByUser_UserIdAndPost_PostId(Long userId, Long postId);}
+	boolean existsByUser_UserIdAndPost_PostId(Long userId, Long postId);
+}

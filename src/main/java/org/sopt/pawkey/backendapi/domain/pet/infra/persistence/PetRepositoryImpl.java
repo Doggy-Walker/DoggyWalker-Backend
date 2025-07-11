@@ -2,9 +2,7 @@ package org.sopt.pawkey.backendapi.domain.pet.infra.persistence;
 
 import java.util.List;
 
-import org.sopt.pawkey.backendapi.domain.pet.domain.model.PetTraitCategory;
 import org.sopt.pawkey.backendapi.domain.pet.domain.repository.PetRepository;
-import org.sopt.pawkey.backendapi.domain.pet.infra.mapper.PetTraitCategoryMapper;
 import org.sopt.pawkey.backendapi.domain.pet.infra.persistence.entity.PetTraitCategoryEntity;
 import org.sopt.pawkey.backendapi.domain.pet.infra.persistence.entity.SpringDataPetTraitCategoryRepository;
 import org.springframework.stereotype.Repository;
@@ -17,19 +15,14 @@ public class PetRepositoryImpl implements PetRepository {
 
 	private final SpringDataPetTraitCategoryRepository springDataPetTraitCategoryRepository;
 
-
 	@Override
-	public List<PetTraitCategory> findAllPetTraitCategoriesWithOptions() {
-		List<PetTraitCategoryEntity> entities = springDataPetTraitCategoryRepository.findAllWithOptions();
+	public List<PetTraitCategoryEntity> findAllPetTraitCategoriesWithOptions() {
 
-		return entities.stream()
-			.map(PetTraitCategoryMapper::toDomain)
-			.toList();
+		return springDataPetTraitCategoryRepository.findAllWithOptions();
 
 	}
 
 }
-
 
 // @Override
 // public User save(final User user) {

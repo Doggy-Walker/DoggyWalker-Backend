@@ -2,15 +2,15 @@ package org.sopt.pawkey.backendapi.domain.user.domain.repository;
 
 import java.util.Optional;
 
-import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
+import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.UserEntity;
 
 public interface UserRepository {
 
-	User save(User user);
+	UserEntity save(final UserEntity user);
 
 	boolean existsByLoginId(String loginId);
 
 	void deleteAllInBatch();
 
-	Optional<User> findById(Long id);
+	Optional<UserEntity> findById(Long id);
 }

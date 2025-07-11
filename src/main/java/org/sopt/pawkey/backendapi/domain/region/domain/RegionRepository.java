@@ -2,8 +2,8 @@ package org.sopt.pawkey.backendapi.domain.region.domain;
 
 import java.util.Optional;
 
-import org.sopt.pawkey.backendapi.domain.region.domain.model.Region;
+import org.sopt.pawkey.backendapi.domain.region.infra.persistence.entity.RegionEntity;
 
 public interface RegionRepository {
-	Optional<Region> getById(Long regionId);
+	Optional<RegionEntity> getById(Long regionId);
 }

@@ -7,6 +7,4 @@ import org.sopt.pawkey.backendapi.domain.pet.application.dto.response.PetTraitCa
 public interface PetQueryService {
 	List<PetTraitCategoryResult> getAllPetTraitCategories();
 
-
-
 }

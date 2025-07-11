@@ -84,6 +84,7 @@ public class PetEntity extends BaseEntity {
 		this.user = user;
 		this.isNeutered = isNeutered;
 		this.breed = breed;
-		this.petTraitSelectedEntityList = petTraitSelectedEntityList != null ? petTraitSelectedEntityList : new ArrayList<>();
+		this.petTraitSelectedEntityList =
+			petTraitSelectedEntityList != null ? petTraitSelectedEntityList : new ArrayList<>();
 	}
 }

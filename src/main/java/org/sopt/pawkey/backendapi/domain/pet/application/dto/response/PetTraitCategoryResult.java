@@ -2,10 +2,8 @@ package org.sopt.pawkey.backendapi.domain.pet.application.dto.response;
 
 import java.util.List;
 
-import org.sopt.pawkey.backendapi.domain.pet.domain.model.PetTraitCategory;
-import org.sopt.pawkey.backendapi.domain.pet.domain.model.PetTraitOption;
-
-
+import org.sopt.pawkey.backendapi.domain.pet.infra.persistence.entity.PetTraitCategoryEntity;
+import org.sopt.pawkey.backendapi.domain.pet.infra.persistence.entity.PetTraitOptionEntity;
 
 public record PetTraitCategoryResult(
 	Long id,
@@ -13,12 +11,12 @@ public record PetTraitCategoryResult(
 	List<PetTraitOptionResult> options
 ) {
 
-	public static PetTraitCategoryResult fromDomain(PetTraitCategory petTraitCategory) {
+	public static PetTraitCategoryResult fromEntity(PetTraitCategoryEntity petTraitCategory) {
 		return new PetTraitCategoryResult(
 			petTraitCategory.getId(),
 			petTraitCategory.getCategoryName(),
-			petTraitCategory.getPetTraitOptionList().stream()
-				.map(PetTraitOptionResult::fromDomain)
+			petTraitCategory.getPetTraitOptionEntityList().stream()
+				.map(PetTraitOptionResult::fromEntity)
 				.toList()
 		);
 	}
@@ -27,8 +25,8 @@ public record PetTraitCategoryResult(
 		Long id,
 		String text
 	) {
-		public static PetTraitOptionResult fromDomain(PetTraitOption domain) {
-			return new PetTraitOptionResult(domain.getId(), domain.getOptionText());
+		public static PetTraitOptionResult fromEntity(PetTraitOptionEntity entity) {
+			return new PetTraitOptionResult(entity.getId(), entity.getOptionText());
 		}
 	}
 }

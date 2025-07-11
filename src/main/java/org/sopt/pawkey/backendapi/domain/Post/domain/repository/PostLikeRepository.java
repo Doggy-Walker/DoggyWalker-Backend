@@ -1,8 +1,9 @@
 package org.sopt.pawkey.backendapi.domain.post.domain.repository;
 
-import org.sopt.pawkey.backendapi.domain.post.domain.model.PostLike;
+import org.sopt.pawkey.backendapi.domain.post.infra.persistence.entity.PostLikeEntity;
 
 public interface PostLikeRepository {
-	PostLike save(PostLike postLike);
+	PostLikeEntity save(PostLikeEntity postLike);
+
 	boolean existsByUserIdAndPostId(Long userId, Long postId);
 }

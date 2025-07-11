@@ -7,8 +7,6 @@ import java.util.List;
 import org.sopt.pawkey.backendapi.domain.pet.api.dto.response.PetTraitCategoryListResponseDto;
 import org.sopt.pawkey.backendapi.domain.pet.application.dto.response.PetTraitCategoryResult;
 import org.sopt.pawkey.backendapi.domain.pet.application.service.PetQueryService;
-import org.sopt.pawkey.backendapi.domain.pet.application.service.PetService;
-import org.sopt.pawkey.backendapi.global.constants.AppConstants;
 import org.sopt.pawkey.backendapi.global.response.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

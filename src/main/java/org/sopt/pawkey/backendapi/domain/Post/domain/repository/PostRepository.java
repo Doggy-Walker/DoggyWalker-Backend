@@ -2,8 +2,8 @@ package org.sopt.pawkey.backendapi.domain.post.domain.repository;
 
 import java.util.Optional;
 
-import org.sopt.pawkey.backendapi.domain.post.domain.model.Post;
+import org.sopt.pawkey.backendapi.domain.post.infra.persistence.entity.PostEntity;
 
 public interface PostRepository {
-	Optional<Post> findById(Long postId);
+	Optional<PostEntity> findById(Long postId);
 }

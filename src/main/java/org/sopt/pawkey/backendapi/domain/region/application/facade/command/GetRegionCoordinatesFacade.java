@@ -3,9 +3,9 @@ package org.sopt.pawkey.backendapi.domain.region.application.facade.command;
 import org.sopt.pawkey.backendapi.domain.region.application.dto.command.GetRegionCoordinatesCommand;
 import org.sopt.pawkey.backendapi.domain.region.application.dto.result.GetRegionCoordinatesResult;
 import org.sopt.pawkey.backendapi.domain.region.application.service.RegionService;
-import org.sopt.pawkey.backendapi.domain.region.domain.model.Region;
+import org.sopt.pawkey.backendapi.domain.region.infra.persistence.entity.RegionEntity;
 import org.sopt.pawkey.backendapi.domain.user.application.service.UserService;
-import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
+import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.UserEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,8 +22,8 @@ public class GetRegionCoordinatesFacade {
 	public GetRegionCoordinatesResult execute(Long userId,
 		GetRegionCoordinatesCommand getRegionCoordinatesCommand) {
 
-		User user = userService.getByUserId(userId);
-		Region region = regionService.getRegionById(getRegionCoordinatesCommand.regionId());
+		UserEntity user = userService.getByUserId(userId);
+		RegionEntity region = regionService.getRegionById(getRegionCoordinatesCommand.regionId());
 
 		return GetRegionCoordinatesResult.from(region);
 	}

@@ -2,12 +2,14 @@ package org.sopt.pawkey.backendapi.domain.region.infra.persistence.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.locationtech.jts.geom.MultiPolygon;
 import org.sopt.pawkey.backendapi.domain.region.domain.model.RegionType;
 import org.sopt.pawkey.backendapi.domain.routes.infra.persistence.entity.RouteEntity;
 import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.UserEntity;
 import org.sopt.pawkey.backendapi.global.infra.persistence.entity.BaseEntity;
+import org.sopt.pawkey.backendapi.global.util.GeoJsonUtil;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -72,5 +74,14 @@ public class RegionEntity extends BaseEntity {
 		this.parent = parent;
 	}
 
+	public String getFullRegionName() {
+		String parentText = parent == null ? "" : parent.getRegionName() + " ";
+
+		return parentText + regionName;
+	}
+
+	public Map<String, Object> getGeoJson() {
+		return GeoJsonUtil.toGeoJson(areaGeometry);
+	}
 }
 

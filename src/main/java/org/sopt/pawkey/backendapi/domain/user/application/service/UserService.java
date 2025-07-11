@@ -1,11 +1,9 @@
 package org.sopt.pawkey.backendapi.domain.user.application.service;
 
-import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
+import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.UserEntity;
 
 public interface UserService {
-	User getByUserId(Long userId);
+	UserEntity getByUserId(Long userId);
 
-	User findById(Long userId);
-
-	//User createUser(final CreateUserCommand request);
+	UserEntity findById(Long userId);
 }

@@ -2,7 +2,6 @@ package org.sopt.pawkey.backendapi.global.config.interceptor;
 
 import static org.sopt.pawkey.backendapi.global.constants.AppConstants.*;
 
-import org.sopt.pawkey.backendapi.global.constants.AppConstants;
 import org.sopt.pawkey.backendapi.global.exception.BusinessException;
 import org.sopt.pawkey.backendapi.global.exception.GlobalErrorCode;
 import org.springframework.stereotype.Component;

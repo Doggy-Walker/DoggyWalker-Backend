@@ -14,7 +14,6 @@ import org.locationtech.jts.geom.LineString;
 import org.locationtech.jts.geom.MultiPolygon;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.Polygon;
-import org.sopt.pawkey.backendapi.global.enums.GeometryType;
 
 public class GeoJsonUtil {
 	public static Map<String, Object> toGeoJson(Geometry geometry) {

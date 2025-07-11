@@ -1,7 +1,7 @@
 package org.sopt.pawkey.backendapi.domain.region.application.service;
 
-import org.sopt.pawkey.backendapi.domain.region.domain.model.Region;
+import org.sopt.pawkey.backendapi.domain.region.infra.persistence.entity.RegionEntity;
 
 public interface RegionService {
-	Region getRegionById(Long regionId);
+	RegionEntity getRegionById(Long regionId);
 }

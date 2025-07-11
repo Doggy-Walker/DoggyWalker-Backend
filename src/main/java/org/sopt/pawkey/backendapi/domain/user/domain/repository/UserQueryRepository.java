@@ -1,13 +1,12 @@
 package org.sopt.pawkey.backendapi.domain.user.domain.repository;
 
-import java.util.List;
 import java.util.Optional;
 
-import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
+import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.UserEntity;
 
 public interface UserQueryRepository {
-	
-	Optional<User> getUserByUserId(Long userId);
+
+	Optional<UserEntity> getUserByUserId(Long userId);
 }
 
 
