@@ -18,4 +18,10 @@ public class Region {
 	private final Region parent;
 	private final List<Region> children;
 	private final RegionArea area;
+
+	public String getFullRegionName() {
+		String parentText = parent == null ? "" : parent.getRegionName() + " ";
+		
+		return parentText + regionName;
+	}
 }

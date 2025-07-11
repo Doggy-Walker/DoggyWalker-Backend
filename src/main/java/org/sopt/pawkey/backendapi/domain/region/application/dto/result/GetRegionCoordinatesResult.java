@@ -12,10 +12,9 @@ public record GetRegionCoordinatesResult(
 	Map<String, Object> geometryDto
 ) {
 	public static GetRegionCoordinatesResult from(Region region) {
-		String parentText = region.getParent() == null ? "" : region.getParent().getRegionName() + " ";
 
 		return GetRegionCoordinatesResult.builder()
-			.regionName(parentText + region.getRegionName())
+			.regionName(region.getFullRegionName())
 			.geometryDto(region.getArea().getGeoJson())
 			.build();
 	}
