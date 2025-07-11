@@ -1,5 +1,7 @@
 package org.sopt.pawkey.backendapi.domain.post.infra.persistence.entity;
 
+import java.sql.ConnectionBuilder;
+
 import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.UserEntity;
 import org.sopt.pawkey.backendapi.global.infra.persistence.entity.BaseEntity;
 
@@ -22,6 +24,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class PostLikeEntity extends BaseEntity {
 
 	@Id

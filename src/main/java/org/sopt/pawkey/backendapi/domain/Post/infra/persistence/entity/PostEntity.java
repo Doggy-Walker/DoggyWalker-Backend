@@ -29,14 +29,17 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class PostEntity extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "post_id")
 	private Long postId;
 
-	@Column(name = "description", columnDefinition = "TEXT")
+	@Column(name = "title", columnDefinition = "TEXT")
+	private String title;
 
+	@Column(name = "description", columnDefinition = "TEXT")
 	private String description;
 
 	@Column(name = "is_public", nullable = false)
@@ -65,6 +68,7 @@ public class PostEntity extends BaseEntity {
 
 	public static PostEntity create(
 		Long postId,
+		String title,
 		String description,
 		boolean isPublic,
 		UserEntity user,
@@ -72,6 +76,7 @@ public class PostEntity extends BaseEntity {
 	) {
 		return new PostEntity(
 			postId,
+			title,
 			description,
 			isPublic,
 			user,

@@ -20,7 +20,7 @@ public class PostMapper {
 			entity.getPostId(),
 			userMapper.toDomain(entity.getUser()),
 			routeMapper.toDomain(entity.getRoute()),
-			null,  // title은 현재 도메인에 없음
+			entity.getTitle(),
 			entity.getDescription(),
 			entity.isPublic()
 		);
@@ -29,10 +29,17 @@ public class PostMapper {
 	public PostEntity toEntity(Post domain) {
 		return PostEntity.create(
 			domain.getPostId(),
+			domain.getTitle(),
 			domain.getDescription(),
-			domain.getIsPublic(),
+			domain.getIsPublic(), 
 			userMapper.toEntity(domain.getWriter()),
 			routeMapper.toEntity(domain.getRoute())
 		);
+	}
+
+	public PostEntity toEntity(Long postId) {
+		return PostEntity.builder()
+			.postId(postId)
+			.build();
 	}
 }

@@ -5,6 +5,8 @@ import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
 import org.sopt.pawkey.backendapi.domain.user.domain.repository.UserRepository;
 import org.sopt.pawkey.backendapi.domain.user.exception.UserBusinessException;
 import org.sopt.pawkey.backendapi.domain.user.exception.UserErrorCode;
+import org.sopt.pawkey.backendapi.domain.user.infra.mapper.UserMapper;
+import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.UserEntity;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -14,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 public class UserServiceImpl implements UserService {
 
 	private final UserRepository userRepository;
+	private final UserMapper userMapper;
 
 	/**
 	 * @param request User 생성 request
@@ -31,5 +34,10 @@ public class UserServiceImpl implements UserService {
 		//User user = User.createUser(loginId, name);
 
 		return null;
+	}
+
+	public User findById(final Long id) {
+		return userRepository.findById(id)
+			.orElseThrow(() -> new UserBusinessException(UserErrorCode.USER_NOT_FOUND));
 	}
 }

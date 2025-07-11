@@ -12,12 +12,19 @@ public class UserMapper {
 	 * @return 유저 엔티티
 	 */
 	public UserEntity toEntity(User domain) {
-		return UserEntity.createEntity(
-			domain.getName(),
-			domain.getGender(),
-			domain.getAge(),
-			domain.getRegion()
-		);
+		return UserEntity.builder()
+			.userId(domain.getUserId())
+			.name(domain.getName())
+			.gender(domain.getGender())
+			.age(domain.getAge())
+			.region(domain.getRegion())
+			.build();
+	}
+
+	public UserEntity toEntity(Long userId) {
+		return UserEntity.builder()
+			.userId(userId)
+			.build();
 	}
 
 	/**

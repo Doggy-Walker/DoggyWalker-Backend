@@ -1,5 +1,7 @@
 package org.sopt.pawkey.backendapi.domain.user.infra.persistence;
 
+import java.util.Optional;
+
 import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
 import org.sopt.pawkey.backendapi.domain.user.domain.repository.UserRepository;
 import org.sopt.pawkey.backendapi.domain.user.infra.mapper.UserMapper;
@@ -32,5 +34,10 @@ public class UserRepositoryImpl implements UserRepository {
 	@Override
 	public void deleteAllInBatch() {
 		springDataUserRepository.deleteAllInBatch();
+	}
+
+	@Override
+	public Optional<User> findById(Long id) {
+		return springDataUserRepository.findById(id).map(userMapper::toDomain);
 	}
 }

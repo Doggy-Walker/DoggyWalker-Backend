@@ -14,19 +14,17 @@ public class PostLikeMapper {
 	private final PostMapper postMapper;
 	private final UserMapper userMapper;
 
-	public PostLike toDomain(PostLikeEntity entity) {
-		return PostLike.of(
-			entity.getPostLikeId(),
-			postMapper.toDomain(entity.getPost()),
-			userMapper.toDomain(entity.getUser())
-		);
+	public PostLikeEntity toEntity(PostLike domain) {
+		return PostLikeEntity.builder()
+			.user(userMapper.toEntity(domain.getUser()))
+			.post(postMapper.toEntity(domain.getPost()))
+			.build();
 	}
 
-	public PostLikeEntity toEntity(PostLike domain) {
-		return PostLikeEntity.create(
-			domain.getPostLikeId(),
-			postMapper.toEntity(domain.getPost()),
-			userMapper.toEntity(domain.getUser())
+	public PostLike toDomain(PostLikeEntity entity) {
+		return PostLike.createPostLike(
+			postMapper.toDomain(entity.getPost()),
+			userMapper.toDomain(entity.getUser())
 		);
 	}
 }
