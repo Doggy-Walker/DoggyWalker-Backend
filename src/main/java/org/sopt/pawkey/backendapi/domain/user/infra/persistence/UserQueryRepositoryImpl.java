@@ -22,35 +22,6 @@ public class UserQueryRepositoryImpl implements UserQueryRepository {
 	private final UserMapper userMapper;
 
 	@Override
-	public List<User> getUsers() {
-		QUserEntity userEntity = QUserEntity.userEntity;
-
-		List<UserEntity> userEntities = jpaQueryFactory
-			.selectFrom(userEntity)
-			.orderBy(userEntity.userId.desc())
-			.fetch();
-
-		return userEntities.stream()
-			.map(userMapper::toDomain)
-			.toList();
-	}
-
-	@Override
-	public List<User> getUsersByNameLike(String name) {
-		QUserEntity userEntity = QUserEntity.userEntity;
-
-		List<UserEntity> userEntities = jpaQueryFactory
-			.selectFrom(userEntity)
-			.where(userEntity.name.like("%" + name + "%"))
-			.orderBy(userEntity.userId.desc())
-			.fetch();
-
-		return userEntities.stream()
-			.map(userMapper::toDomain)
-			.toList();
-	}
-
-	@Override
 	public Optional<User> getUserByUserId(Long userId) {
 		QUserEntity userEntity = QUserEntity.userEntity;
 
@@ -60,6 +31,6 @@ public class UserQueryRepositoryImpl implements UserQueryRepository {
 			.fetchOne();
 
 		return Optional.ofNullable(found)
-			.map(userMapper::toDomain);
+			.map(UserMapper::toDomain);
 	}
 }

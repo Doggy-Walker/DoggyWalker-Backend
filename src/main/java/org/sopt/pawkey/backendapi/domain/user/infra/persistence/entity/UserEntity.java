@@ -22,6 +22,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -57,8 +58,20 @@ public class UserEntity extends BaseEntity {
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PostLikeEntity> postLikeEntityList = new ArrayList<>();
 
-	public static UserEntity createEntity(String name, String loginId) {
-		return null;
 
+	@Builder
+	public UserEntity(Long userId,
+		String name,
+		String gender,
+		int age,
+		RegionEntity region,
+		String loginId) {
+		this.userId = userId;
+		this.name = name;
+		this.gender = gender;
+		this.age = age;
+		this.region = region;
+		this.loginId = loginId;
 	}
+
 }

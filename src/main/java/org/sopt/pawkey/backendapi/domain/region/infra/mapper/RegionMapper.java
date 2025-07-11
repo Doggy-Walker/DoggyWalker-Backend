@@ -13,7 +13,7 @@ public class RegionMapper {
 	 * @param domain Region 도메인 모델
 	 * @return Region 엔티티
 	 */
-	public RegionEntity toEntity(Region domain) {
+	public static RegionEntity toEntity(Region domain) {
 		if (domain == null) {
 			return null;
 		}
@@ -30,7 +30,7 @@ public class RegionMapper {
 	 * @param entity Region 엔티티
 	 * @return Region 도메인 모델
 	 */
-	public Region toDomain(RegionEntity entity) {
+	public static Region toDomain(RegionEntity entity) {
 		if (entity == null) {
 			return null;
 		}

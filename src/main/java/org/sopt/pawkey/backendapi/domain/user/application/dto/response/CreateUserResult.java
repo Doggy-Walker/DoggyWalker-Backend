@@ -8,7 +8,7 @@ public record CreateUserResult(
 	String loginId
 ) {
 
-	public static CreateUserResult from(final User user) {
-		return new CreateUserResult(user.getUserId(), user.getName(), user.getLoginId());
-	}
+	// public static CreateUserResult from(final User user) {
+	// 	return new CreateUserResult(user.getUserId(), user.getName(), user.getLoginId());
+	// }
 }

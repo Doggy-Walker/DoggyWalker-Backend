@@ -63,5 +63,14 @@ public class RegionEntity extends BaseEntity {
 
 	@OneToMany(mappedBy = "region", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<RouteEntity> routeEntityList = new ArrayList<>();
+
+	@Builder
+	public RegionEntity(Long regionId, String regionName, RegionType regionType, RegionEntity parent) {
+		this.regionId = regionId;
+		this.regionName = regionName;
+		this.regionType = regionType;
+		this.parent = parent;
+	}
+
 }
 

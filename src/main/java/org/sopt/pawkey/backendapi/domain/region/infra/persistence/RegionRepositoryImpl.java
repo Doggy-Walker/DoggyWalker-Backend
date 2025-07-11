@@ -14,11 +14,10 @@ import lombok.RequiredArgsConstructor;
 public class RegionRepositoryImpl implements RegionRepository {
 
 	private final SpringDataRegionRepository springDataRegionRepository;
-	private final RegionMapper regionMapper;
 
 	@Override
 	public Optional<Region> getById(Long regionId) {
 		return springDataRegionRepository.getByRegionId(regionId)
-			.map(regionMapper::toDomain);
+			.map(RegionMapper::toDomain);
 	}
 }

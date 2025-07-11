@@ -18,6 +18,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -43,4 +44,14 @@ public class PetTraitOptionEntity extends BaseEntity {
 
 	@OneToMany(mappedBy = "petTraitOption", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PetTraitSelectedEntity> petTraitSelectedEntityList = new ArrayList<>();
+
+	@Builder
+	public PetTraitOptionEntity(Long id,
+		PetTraitCategoryEntity petTraitCategory,
+		String optionText) {
+		this.id = id;
+		this.petTraitCategory = petTraitCategory;
+		this.optionText = optionText;
+		this.petTraitSelectedEntityList = new ArrayList<>();
+	}
 }
