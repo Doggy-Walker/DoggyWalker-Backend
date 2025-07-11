@@ -19,6 +19,9 @@ public class RegionArea {
 	}
 
 	public static RegionArea of(MultiPolygon areaGeometry) {
+		if (areaGeometry == null) {
+			throw new IllegalArgumentException("범위에 대한 좌표값이 존재하지 않습니다.");
+		}
 		return new RegionArea(areaGeometry);
 	}
 
