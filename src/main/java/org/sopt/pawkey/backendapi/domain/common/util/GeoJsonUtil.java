@@ -14,6 +14,11 @@ import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.Polygon;
 
 public class GeoJsonUtil {
+	private static final String POLYGON = "Polygon";
+	private static final String LINESTRING = "LineString";
+	private static final String POINT = "Point";
+	private static final String MULTIPOLYGON = "MultiPolygon";
+
 	public static Map<String, Object> toGeoJson(Geometry geometry) {
 
 		if (geometry == null) {
@@ -39,18 +44,25 @@ public class GeoJsonUtil {
 			Polygon polygon = (Polygon)multiPolygon.getGeometryN(i);
 			coordinates.add(extractPolygonCoordinates(polygon));
 		}
-		Map<String, Object> geoJson = new LinkedHashMap<>();
-		geoJson.put("type", "MultiPolygon");
-		geoJson.put("coordinates", coordinates);
-		return geoJson;
+
+		return generateGeoJsonMap(MULTIPOLYGON, coordinates);
 	}
 
 	private static Map<String, Object> polygonToGeoJson(Polygon polygon) {
 		List<List<List<Double>>> coordinates = extractPolygonCoordinates(polygon);
-		Map<String, Object> geoJson = new LinkedHashMap<>();
-		geoJson.put("type", "Polygon");
-		geoJson.put("coordinates", coordinates);
-		return geoJson;
+
+		return generateGeoJsonMap(POLYGON, coordinates);
+	}
+
+	private static Map<String, Object> lineStringToGeoJson(LineString line) {
+		List<List<Double>> coordinates = extractLineStringCoordinates(line);
+
+		return generateGeoJsonMap(LINESTRING, coordinates);
+	}
+
+	private static Map<String, Object> pointToGeoJson(Point point) {
+
+		return generateGeoJsonMap(POINT, Arrays.asList(point.getX(), point.getY()));
 	}
 
 	private static List<List<List<Double>>> extractPolygonCoordinates(Polygon polygon) {
@@ -67,26 +79,19 @@ public class GeoJsonUtil {
 		return polygonCoordinates;
 	}
 
-	private static Map<String, Object> lineStringToGeoJson(LineString line) {
-		List<List<Double>> coordinates = extractLineStringCoordinates(line);
-		Map<String, Object> geoJson = new LinkedHashMap<>();
-		geoJson.put("type", "LineString");
-		geoJson.put("coordinates", coordinates);
-		return geoJson;
-	}
-
 	private static List<List<Double>> extractLineStringCoordinates(LineString line) {
 		List<List<Double>> coordinates = new ArrayList<>();
 		for (Coordinate coord : line.getCoordinates()) {
 			coordinates.add(Arrays.asList(coord.x, coord.y));
 		}
+
 		return coordinates;
 	}
 
-	private static Map<String, Object> pointToGeoJson(Point point) {
+	private static Map<String, Object> generateGeoJsonMap(String type, List<?> coordinates) {
 		Map<String, Object> geoJson = new LinkedHashMap<>();
-		geoJson.put("type", "Point");
-		geoJson.put("coordinates", Arrays.asList(point.getX(), point.getY()));
+		geoJson.put("type", type);
+		geoJson.put("coordinates", coordinates);
 		return geoJson;
 	}
 }
