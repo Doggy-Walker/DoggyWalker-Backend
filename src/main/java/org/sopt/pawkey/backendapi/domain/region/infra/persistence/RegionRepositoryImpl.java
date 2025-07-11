@@ -17,7 +17,7 @@ public class RegionRepositoryImpl implements RegionRepository {
 	private final RegionMapper regionMapper;
 
 	@Override
-	public Optional<Region> getFirstById(Long regionId) {
+	public Optional<Region> getById(Long regionId) {
 		return springDataRegionRepository.getByRegionId(regionId)
 			.map(regionMapper::toDomain);
 	}

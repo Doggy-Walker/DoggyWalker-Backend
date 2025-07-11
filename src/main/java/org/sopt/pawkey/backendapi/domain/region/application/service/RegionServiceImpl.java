@@ -17,7 +17,7 @@ public class RegionServiceImpl implements RegionService {
 	@Override
 	public Region getRegionById(Long regionId) {
 
-		return regionRepository.getFirstById(regionId)
+		return regionRepository.getById(regionId)
 			.orElseThrow(() -> new RegionBusinessException(RegionErrorCode.REGION_NOT_FOUND));
 	}
 }
