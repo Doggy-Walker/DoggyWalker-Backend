@@ -11,11 +11,15 @@ import lombok.Builder;
 public record GetRegionListResult(
 	List<GuDongDto> guDongDtoList
 ) {
-	public static GetRegionListResult from(List<RegionEntity> gusWithDongs) {
+	public static GetRegionListResult from(List<RegionEntity> regions) {
+		if (regions == null) {
+			return GetRegionListResult.builder().guDongDtoList(List.of()).build();
+		}
+
 		return GetRegionListResult
 			.builder()
 			.guDongDtoList(
-				gusWithDongs.stream()
+				regions.stream()
 					.map(GuDongDto::from)
 					.toList()
 			)

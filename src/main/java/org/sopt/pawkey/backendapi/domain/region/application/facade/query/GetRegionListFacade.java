@@ -7,11 +7,13 @@ import org.sopt.pawkey.backendapi.domain.region.application.dto.result.GetRegion
 import org.sopt.pawkey.backendapi.domain.region.application.service.query.RegionQueryService;
 import org.sopt.pawkey.backendapi.domain.region.infra.persistence.entity.RegionEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class GetRegionListFacade {
 
 	private final RegionQueryService regionQueryService;
