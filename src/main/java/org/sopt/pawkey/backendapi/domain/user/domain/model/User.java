@@ -16,8 +16,8 @@ public class User {
 	private final List<Long> postIds;
 	private final List<Long> reviewIds;
 	private final List<Long> postLikeIds;
-	private int age;
-	private String loginId;
+	private final int age;
+	private final String loginId;
 
 	@Builder
 	public User(Long userId, String name, String gender, String region_id, List<Long> petIds, List<Long> postIds,

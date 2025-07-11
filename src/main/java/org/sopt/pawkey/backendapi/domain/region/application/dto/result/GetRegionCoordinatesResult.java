@@ -18,4 +18,5 @@ public record GetRegionCoordinatesResult(
 			.geometryDto(region.getArea().getGeoJson())
 			.build();
 	}
+
 }
