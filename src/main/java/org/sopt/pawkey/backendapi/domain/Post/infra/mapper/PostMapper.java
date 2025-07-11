@@ -36,10 +36,4 @@ public class PostMapper {
 			routeMapper.toEntity(domain.getRoute())
 		);
 	}
-
-	public PostEntity toEntity(Long postId) {
-		return PostEntity.builder()
-			.postId(postId)
-			.build();
-	}
 }
