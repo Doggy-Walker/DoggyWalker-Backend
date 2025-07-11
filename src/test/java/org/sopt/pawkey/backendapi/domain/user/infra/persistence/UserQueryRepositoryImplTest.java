@@ -1,20 +1,5 @@
 package org.sopt.pawkey.backendapi.domain.user.infra.persistence;
 
-import static org.assertj.core.api.Assertions.*;
-
-import java.util.List;
-import java.util.stream.IntStream;
-
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
-import org.sopt.pawkey.backendapi.domain.user.domain.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
-
 // @SpringBootTest
 // @Transactional
 // @DisplayName("UserQueryRepositoryImpl 통합 테스트")

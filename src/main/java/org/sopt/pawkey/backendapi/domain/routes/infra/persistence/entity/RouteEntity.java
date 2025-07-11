@@ -3,16 +3,11 @@ package org.sopt.pawkey.backendapi.domain.routes.infra.persistence.entity;
 import java.time.LocalDateTime;
 
 import org.locationtech.jts.geom.LineString;
-import org.locationtech.jts.geom.Polygon;
-import org.sopt.pawkey.backendapi.domain.category.infra.persistence.entity.CategoryEntity;
-import org.sopt.pawkey.backendapi.domain.region.domain.model.RegionType;
 import org.sopt.pawkey.backendapi.domain.region.infra.persistence.entity.RegionEntity;
 import org.sopt.pawkey.backendapi.global.infra.persistence.entity.BaseEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,7 +17,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

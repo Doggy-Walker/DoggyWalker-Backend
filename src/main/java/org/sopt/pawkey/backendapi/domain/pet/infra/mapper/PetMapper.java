@@ -3,9 +3,7 @@ package org.sopt.pawkey.backendapi.domain.pet.infra.mapper;
 import org.sopt.pawkey.backendapi.domain.image.infra.mapper.ImageMapper;
 import org.sopt.pawkey.backendapi.domain.pet.domain.model.Pet;
 import org.sopt.pawkey.backendapi.domain.pet.infra.persistence.entity.PetEntity;
-import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
 import org.sopt.pawkey.backendapi.domain.user.infra.mapper.UserMapper;
-import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.UserEntity;
 import org.springframework.stereotype.Component;
 
 @Component

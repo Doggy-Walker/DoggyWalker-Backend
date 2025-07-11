@@ -1,9 +1,5 @@
 package org.sopt.pawkey.backendapi.domain.pet.domain.model;
 
-import java.awt.*;
-
-import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

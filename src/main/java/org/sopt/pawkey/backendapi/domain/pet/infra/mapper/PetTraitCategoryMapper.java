@@ -1,12 +1,9 @@
 package org.sopt.pawkey.backendapi.domain.pet.infra.mapper;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 import org.sopt.pawkey.backendapi.domain.pet.domain.model.PetTraitCategory;
-import org.sopt.pawkey.backendapi.domain.pet.domain.model.PetTraitOption;
 import org.sopt.pawkey.backendapi.domain.pet.infra.persistence.entity.PetTraitCategoryEntity;
-import org.sopt.pawkey.backendapi.domain.pet.infra.persistence.entity.PetTraitOptionEntity;
 
 public class PetTraitCategoryMapper {
 
