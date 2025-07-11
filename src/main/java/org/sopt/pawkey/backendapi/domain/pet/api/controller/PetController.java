@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(API_PREFIX + "/pet/traits")
+@RequestMapping(API_PREFIX + "/pets/traits")
 public class PetController {
 
 	private final PetQueryService petQueryService;
@@ -29,6 +29,7 @@ public class PetController {
 	public ResponseEntity<ApiResponse<PetTraitCategoryListResponseDto>> getPetTraitCategories() {
 		List<PetTraitCategoryResult> resultList = petQueryService.getAllPetTraitCategories();
 		PetTraitCategoryListResponseDto response = PetTraitCategoryListResponseDto.from(resultList);
+
 		return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.success(response));
 	}
 }
