@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -31,7 +32,7 @@ public class PostLikeController {
 	@PostMapping("/{postId}")
 	public ResponseEntity<ApiResponse<Void>> like(
 		@PathVariable Long postId,
-		@RequestHeader("X-USER-ID") Integer userId
+		@RequestHeader("X-USER-ID") @NotNull Integer userId
 	) {
 		postLikeFacade.like(postId, userId.longValue());
 		return ResponseEntity.ok(ApiResponse.success(null));

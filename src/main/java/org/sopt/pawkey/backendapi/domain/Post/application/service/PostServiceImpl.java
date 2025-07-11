@@ -15,8 +15,8 @@ public class PostServiceImpl implements PostService {
 	private final PostRepository postRepository;
 
 	@Override
-	public Post findById(Long id) {
-		return postRepository.findById(id)
+	public Post findById(Long postId) {
+		return postRepository.findById(postId)
 			.orElseThrow(() -> new PostBusinessException(PostErrorCode.POST_NOT_FOUND));
 	}
 }

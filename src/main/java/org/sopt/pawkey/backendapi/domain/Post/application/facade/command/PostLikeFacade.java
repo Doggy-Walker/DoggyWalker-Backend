@@ -19,7 +19,7 @@ public class PostLikeFacade {
 	private final PostLikeService postLikeService;
 
 	@Transactional
-	public void like(final Long postId, final Long userId) {
+	public void like(Long postId, Long userId) {
 		final User user = userService.findById(userId);
 		final Post post = postService.findById(postId);
 

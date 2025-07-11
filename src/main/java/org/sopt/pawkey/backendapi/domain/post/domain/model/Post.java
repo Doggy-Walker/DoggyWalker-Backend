@@ -25,10 +25,6 @@ public class Post {
 		this.isPublic = isPublic;
 	}
 
-	public static Post createPost(User writer, Route route, String title, String description, Boolean isPublic) {
-		return new Post(null, writer, route, title, description, isPublic);
-	}
-
 	public static Post of(Long postId, User writer, Route route, String title, String description,
 		Boolean isPublic) {
 		return new Post(postId, writer, route, title, description, isPublic);

@@ -20,13 +20,6 @@ public class UserMapper {
 			.region(domain.getRegion())
 			.build();
 	}
-
-	public UserEntity toEntity(Long userId) {
-		return UserEntity.builder()
-			.userId(userId)
-			.build();
-	}
-
 	/**
 	 * 데이터베이스 엔티티를 도메인 로직에서 사용하기 위한 도메인 모델로 변경
 	 * @param entity 유저 엔티티
