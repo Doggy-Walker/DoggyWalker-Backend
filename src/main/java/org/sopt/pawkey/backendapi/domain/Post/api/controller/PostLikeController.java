@@ -29,7 +29,7 @@ public class PostLikeController {
 	@PostMapping("/{postId}")
 	public ResponseEntity<ApiResponse<Void>> like(
 		@PathVariable Long postId,
-		@RequestHeader("userId") Integer userId
+		@RequestHeader("X-USER-ID") Integer userId
 	) {
 		postLikeFacade.like(postId, userId.longValue());
 		return ResponseEntity.ok(ApiResponse.success(null));
