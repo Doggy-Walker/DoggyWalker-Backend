@@ -5,11 +5,14 @@ import org.sopt.pawkey.backendapi.domain.user.domain.model.User;
 import org.sopt.pawkey.backendapi.domain.user.infra.persistence.entity.UserEntity;
 import org.springframework.stereotype.Component;
 
-@Component
-public class UserMapper {
+import lombok.RequiredArgsConstructor;
 
+@Component
+@RequiredArgsConstructor
+public class UserMapper {
 	public static User toDomain(UserEntity entity) {
-		if (entity == null) return null;
+		if (entity == null)
+			return null;
 
 		return new User(
 			entity.getUserId(),
@@ -22,7 +25,8 @@ public class UserMapper {
 	}
 
 	public static UserEntity toEntity(User user) {
-		if (user == null) return null;
+		if (user == null)
+			return null;
 
 		return UserEntity.builder()
 			.userId(user.getId())

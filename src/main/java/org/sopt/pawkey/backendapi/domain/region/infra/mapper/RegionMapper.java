@@ -1,30 +1,52 @@
 package org.sopt.pawkey.backendapi.domain.region.infra.mapper;
 
 import org.sopt.pawkey.backendapi.domain.region.domain.model.Region;
+import org.sopt.pawkey.backendapi.domain.region.domain.model.RegionType;
+import org.sopt.pawkey.backendapi.domain.region.domain.vo.RegionArea;
 import org.sopt.pawkey.backendapi.domain.region.infra.persistence.entity.RegionEntity;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RegionMapper {
-
-	public static Region toDomain(RegionEntity entity) {
-		if (entity == null) return null;
-
-		return new Region(
-			entity.getRegionId(),
-			entity.getRegionName(),
-			entity.getRegionType(),
-			entity.getParent() != null ? entity.getParent().getRegionId() : null
-		);
-	}
-
+	/**
+	 * 데이터베이스 인프라와 통신하기 위한 객체로 변경
+	 * @param domain Region 도메인 모델
+	 * @return Region 엔티티
+	 */
 	public static RegionEntity toEntity(Region domain) {
-		if (domain == null) return null;
+		if (domain == null) {
+			return null;
+		}
 
 		return RegionEntity.builder()
-			.regionId(domain.getRegionId())
-			.regionName(domain.getRegionName())
 			.regionType(domain.getRegionType())
+			.regionName(domain.getRegionName())
+			.areaGeometry(domain.getArea().getMultiPolygon())
+			.build();
+	}
+
+	/**
+	 * 데이터베이스 엔티티를 도메인 로직에서 사용하기 위한 도메인 모델로 변경
+	 * @param entity Region 엔티티
+	 * @return Region 도메인 모델
+	 */
+	public static Region toDomain(RegionEntity entity) {
+		if (entity == null) {
+			return null;
+		}
+
+		Region parent = null;
+		// dong인 경우에만 parent 로드
+		if (entity.getRegionType().equals(RegionType.DONG)) {
+			parent = toDomain(entity.getParent());
+		}
+
+		return Region.builder()
+			.regionId(entity.getRegionId())
+			.regionType(entity.getRegionType())
+			.regionName(entity.getRegionName())
+			.area(RegionArea.of(entity.getAreaGeometry()))
+			.parent(parent)
 			.build();
 	}
 }
