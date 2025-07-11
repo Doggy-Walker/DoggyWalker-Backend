@@ -1,6 +1,7 @@
 package org.sopt.pawkey.backendapi.domain.region.infra.mapper;
 
 import org.sopt.pawkey.backendapi.domain.region.domain.model.Region;
+import org.sopt.pawkey.backendapi.domain.region.domain.model.RegionType;
 import org.sopt.pawkey.backendapi.domain.region.domain.vo.RegionArea;
 import org.sopt.pawkey.backendapi.domain.region.infra.persistence.entity.RegionEntity;
 import org.springframework.stereotype.Component;
@@ -34,11 +35,17 @@ public class RegionMapper {
 			return null;
 		}
 
+		Region parent = null;
+		// dong인 경우에만 parent 로드
+		if (entity.getRegionType().equals(RegionType.DONG)) {
+			parent = toDomain(entity.getParent());
+		}
+
 		return Region.builder()
 			.regionType(entity.getRegionType())
 			.regionName(entity.getRegionName())
 			.area(RegionArea.of(entity.getAreaGeometry()))
-			.parent(toDomain(entity.getParent()))
+			.parent(parent)
 			.build();
 	}
 }
