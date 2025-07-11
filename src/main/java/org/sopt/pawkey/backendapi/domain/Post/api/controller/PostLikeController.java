@@ -25,6 +25,8 @@ public class PostLikeController {
 	@ApiResponses({
 		@io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "좋아요 저장 성공"),
 		@io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "잘못된 요청", content = @Content(mediaType = "application/json")),
+		@io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "본인 게시글에 좋아요", content = @Content(mediaType = "application/json")),
+		@io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "409", description = "이미 요청된 좋아요", content = @Content(mediaType = "application/json")),
 		@io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "서버 내부 오류", content = @Content(mediaType = "application/json"))})
 	@PostMapping("/{postId}")
 	public ResponseEntity<ApiResponse<Void>> like(
