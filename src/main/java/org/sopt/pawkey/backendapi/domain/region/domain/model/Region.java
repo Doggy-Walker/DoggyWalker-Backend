@@ -16,8 +16,4 @@ public class Region {
 		this.regionName = regionName;
 		this.parentId = parentId;
 	}
-
-	public static Region of(Long id, Enum regionType, String regionName, Long parentId) {
-		return new Region(id, regionType, regionName, parentId);
-	}
 }
