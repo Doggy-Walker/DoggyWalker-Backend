@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 public class GetRegionListFacade {
 
 	private final RegionQueryService regionQueryService;
+
 	public GetRegionListResult execute(GetRegionListCommand command) {
 		List<RegionEntity> GusWithDongs = regionQueryService.searchGusWithRegion(command);
 

@@ -4,12 +4,12 @@ import static org.sopt.pawkey.backendapi.global.constants.AppConstants.*;
 
 import org.sopt.pawkey.backendapi.domain.region.api.dto.GetRegionCoordinatesResponse;
 import org.sopt.pawkey.backendapi.domain.region.api.dto.GetRegionListResponse;
-import org.sopt.pawkey.backendapi.domain.region.application.dto.command.GetRegionListCommand;
-import org.sopt.pawkey.backendapi.domain.region.application.dto.result.GetRegionListResult;
 import org.sopt.pawkey.backendapi.domain.region.application.dto.command.GetRegionCoordinatesCommand;
+import org.sopt.pawkey.backendapi.domain.region.application.dto.command.GetRegionListCommand;
 import org.sopt.pawkey.backendapi.domain.region.application.dto.result.GetRegionCoordinatesResult;
-import org.sopt.pawkey.backendapi.domain.region.application.facade.query.GetRegionListFacade;
+import org.sopt.pawkey.backendapi.domain.region.application.dto.result.GetRegionListResult;
 import org.sopt.pawkey.backendapi.domain.region.application.facade.query.GetRegionCoordinatesFacade;
+import org.sopt.pawkey.backendapi.domain.region.application.facade.query.GetRegionListFacade;
 import org.sopt.pawkey.backendapi.global.constants.AppConstants;
 import org.sopt.pawkey.backendapi.global.exception.BusinessException;
 import org.sopt.pawkey.backendapi.global.response.ApiResponse;
@@ -47,7 +47,6 @@ public class RegionController {
 		return ResponseEntity.ok(
 			ApiResponse.success(GetRegionListResponse.from(result)));
 	}
-
 
 	@GetMapping("/{regionId}/geometry")
 	@Operation(summary = "지역 좌표 조회", description = "지역 좌표 조회 API입니다.", tags = {"Region"})

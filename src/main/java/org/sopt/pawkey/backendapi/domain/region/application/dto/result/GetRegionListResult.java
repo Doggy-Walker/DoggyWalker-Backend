@@ -2,8 +2,6 @@ package org.sopt.pawkey.backendapi.domain.region.application.dto.result;
 
 import java.util.List;
 
-import javax.swing.plaf.synth.Region;
-
 import org.sopt.pawkey.backendapi.domain.region.infra.persistence.entity.RegionEntity;
 
 import lombok.AccessLevel;

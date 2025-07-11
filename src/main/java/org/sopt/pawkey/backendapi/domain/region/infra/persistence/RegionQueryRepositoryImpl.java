@@ -1,12 +1,9 @@
 package org.sopt.pawkey.backendapi.domain.region.infra.persistence;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.sopt.pawkey.backendapi.domain.region.domain.RegionQueryRepository;
 import org.sopt.pawkey.backendapi.domain.region.domain.model.RegionType;
-import org.sopt.pawkey.backendapi.domain.region.exception.RegionBusinessException;
-import org.sopt.pawkey.backendapi.domain.region.exception.RegionErrorCode;
 import org.sopt.pawkey.backendapi.domain.region.infra.persistence.entity.QRegionEntity;
 import org.sopt.pawkey.backendapi.domain.region.infra.persistence.entity.RegionEntity;
 import org.springframework.stereotype.Repository;
