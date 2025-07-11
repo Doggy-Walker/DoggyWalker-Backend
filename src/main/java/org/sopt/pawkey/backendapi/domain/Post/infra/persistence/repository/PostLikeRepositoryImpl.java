@@ -28,11 +28,7 @@ public class PostLikeRepositoryImpl implements PostLikeRepository {
 	}
 
 	@Override
-	public boolean existsByUserAndPost(Long userId, Long postId) {
-		// userId → UserEntity
-		var userEntity = userMapper.toEntity(userId);   // ★ userId만으로 Entity 생성
-		var postEntity = postMapper.toEntity(postId);   // ★ postId만으로 Entity 생성
-
-		return jpaRepository.existsByUserAndPost(userEntity, postEntity);
+	public boolean existsByUserIdAndPostId(Long userId, Long postId) {
+		return jpaRepository.existsByUser_UserIdAndPost_PostId(userId, postId);
 	}
 }

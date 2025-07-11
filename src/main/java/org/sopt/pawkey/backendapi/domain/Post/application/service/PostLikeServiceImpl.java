@@ -21,7 +21,7 @@ public class PostLikeServiceImpl implements PostLikeService {
 	 */
 	@Override
 	public void like(final User user, final Post post) {
-		boolean exists = postLikeRepository.existsByUserAndPost(user.getUserId(), post.getPostId());
+		boolean exists = postLikeRepository.existsByUserIdAndPostId(user.getUserId(), post.getPostId());
 		if (exists) {
 			throw new PostLikeBusinessException(PostLikeErrorCode.DUPLICATE_LIKE);
 		}
