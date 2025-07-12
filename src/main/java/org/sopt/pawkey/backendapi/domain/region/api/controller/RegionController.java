@@ -3,9 +3,13 @@ package org.sopt.pawkey.backendapi.domain.region.api.controller;
 import static org.sopt.pawkey.backendapi.global.constants.AppConstants.*;
 
 import org.sopt.pawkey.backendapi.domain.region.api.dto.GetRegionCoordinatesResponse;
+import org.sopt.pawkey.backendapi.domain.region.api.dto.GetRegionListResponse;
 import org.sopt.pawkey.backendapi.domain.region.application.dto.command.GetRegionCoordinatesCommand;
+import org.sopt.pawkey.backendapi.domain.region.application.dto.command.GetRegionListCommand;
 import org.sopt.pawkey.backendapi.domain.region.application.dto.result.GetRegionCoordinatesResult;
-import org.sopt.pawkey.backendapi.domain.region.application.facade.command.GetRegionCoordinatesFacade;
+import org.sopt.pawkey.backendapi.domain.region.application.dto.result.GetRegionListResult;
+import org.sopt.pawkey.backendapi.domain.region.application.facade.query.GetRegionCoordinatesFacade;
+import org.sopt.pawkey.backendapi.domain.region.application.facade.query.GetRegionListFacade;
 import org.sopt.pawkey.backendapi.global.constants.AppConstants;
 import org.sopt.pawkey.backendapi.global.exception.BusinessException;
 import org.sopt.pawkey.backendapi.global.response.ApiResponse;
@@ -28,6 +32,21 @@ import lombok.RequiredArgsConstructor;
 public class RegionController {
 
 	private final GetRegionCoordinatesFacade getRegionCoordinatesFacade;
+	private final GetRegionListFacade getRegionListFacade;
+
+	@GetMapping
+	@Operation(summary = "지역구 리스트 조회", description = "검색 키워드로 지역구 리스트를 조회하는 API입니다.", tags = {"Region"})
+	@ApiResponses({
+		@io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "지역구 리스트 조회")
+	})
+	public ResponseEntity<ApiResponse<GetRegionListResponse>> getRegionList() {
+
+		GetRegionListCommand command = new GetRegionListCommand("강남구");
+		GetRegionListResult result = getRegionListFacade.execute(command);
+
+		return ResponseEntity.ok(
+			ApiResponse.success(GetRegionListResponse.from(result)));
+	}
 
 	@GetMapping("/{regionId}/geometry")
 	@Operation(summary = "지역 좌표 조회", description = "지역 좌표 조회 API입니다.", tags = {"Region"})
