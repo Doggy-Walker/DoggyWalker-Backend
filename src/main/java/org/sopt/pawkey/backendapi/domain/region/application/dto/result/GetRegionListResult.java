@@ -9,33 +9,35 @@ import lombok.Builder;
 
 @Builder(access = AccessLevel.PROTECTED)
 public record GetRegionListResult(
-	List<GuDongDto> guDongDtoList
+	List<DistrictDto> districtDtos
 ) {
 	public static GetRegionListResult from(List<RegionEntity> regions) {
 		if (regions == null) {
-			return GetRegionListResult.builder().guDongDtoList(List.of()).build();
+			return GetRegionListResult.builder().districtDtos(List.of()).build();
 		}
 
 		return GetRegionListResult
 			.builder()
-			.guDongDtoList(
+			.districtDtos(
 				regions.stream()
-					.map(GuDongDto::from)
+					.map(DistrictDto::from)
 					.toList()
 			)
 			.build();
 	}
 
 	@Builder(access = AccessLevel.PROTECTED)
-	public record GuDongDto(
+	public record DistrictDto(
 		RegionDto gu,
 		List<RegionDto> dongs
 	) {
-		public static GuDongDto from(RegionEntity region) {
-			return GuDongDto
+		public static DistrictDto from(RegionEntity region) {
+			return DistrictDto
 				.builder()
 				.gu(RegionDto.from(region))
-				.dongs(region.getChildrenRegionList().stream().map(RegionDto::from).toList())
+				.dongs(region.getChildrenRegionList().stream()
+					.map(RegionDto::from).toList()
+				)
 				.build();
 		}
 	}
